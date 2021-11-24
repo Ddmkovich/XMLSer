@@ -11,11 +11,12 @@ namespace XMLSer
     [Serializable] 
     public class ADs
     {
+        //Атрибуты для авито
         [XmlAttribute("formatVersion")]
         public string formatVersion = "3";
         [XmlAttribute("target")]
-        
         public string target = "Avito.ru";
+
         public List<ADData> AdsList { get; set; } = new List<ADData>();
     }
 
