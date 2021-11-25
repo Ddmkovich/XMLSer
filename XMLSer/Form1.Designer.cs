@@ -78,7 +78,10 @@
             // 
             // ADsList
             // 
+            this.ADsList.Alignment = System.Windows.Forms.ListViewAlignment.Left;
+            this.ADsList.AutoArrange = false;
             this.ADsList.HideSelection = false;
+            this.ADsList.LabelWrap = false;
             this.ADsList.Location = new System.Drawing.Point(13, 12);
             this.ADsList.Name = "ADsList";
             this.ADsList.Size = new System.Drawing.Size(209, 565);
@@ -494,7 +497,7 @@
             this.btCreate.Name = "btCreate";
             this.btCreate.Size = new System.Drawing.Size(154, 55);
             this.btCreate.TabIndex = 2;
-            this.btCreate.Text = "Сформировать";
+            this.btCreate.Text = "Сохранить";
             this.btCreate.UseVisualStyleBackColor = true;
             this.btCreate.Click += new System.EventHandler(this.btCreate_Click);
             // 
@@ -503,7 +506,7 @@
             this.btDeserialize.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btDeserialize.Location = new System.Drawing.Point(13, 583);
             this.btDeserialize.Name = "btDeserialize";
-            this.btDeserialize.Size = new System.Drawing.Size(209, 55);
+            this.btDeserialize.Size = new System.Drawing.Size(209, 27);
             this.btDeserialize.TabIndex = 3;
             this.btDeserialize.Text = "Загрузить список";
             this.btDeserialize.UseVisualStyleBackColor = true;
@@ -511,11 +514,11 @@
             // 
             // btSerialize
             // 
-            this.btSerialize.Location = new System.Drawing.Point(399, 613);
+            this.btSerialize.Location = new System.Drawing.Point(13, 616);
             this.btSerialize.Name = "btSerialize";
-            this.btSerialize.Size = new System.Drawing.Size(158, 23);
+            this.btSerialize.Size = new System.Drawing.Size(209, 36);
             this.btSerialize.TabIndex = 4;
-            this.btSerialize.Text = "Сериализировать";
+            this.btSerialize.Text = "Загрузить файл";
             this.btSerialize.UseVisualStyleBackColor = true;
             this.btSerialize.Click += new System.EventHandler(this.btSerialize_Click);
             // 

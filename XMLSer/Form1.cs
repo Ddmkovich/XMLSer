@@ -28,6 +28,7 @@ namespace XMLSer
             tbPrice.Clear();
             tbVideoURL.Clear();
             tbImages.Clear();
+            cmbADStatus.SelectedIndex = 0;
             
         }
         private void btCreate_Click(object sender, EventArgs e)
