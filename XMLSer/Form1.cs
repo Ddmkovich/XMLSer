@@ -32,13 +32,11 @@ namespace XMLSer
         }
         private void btCreate_Click(object sender, EventArgs e)
         {
-            ADData ad = new ADData(tbID.Text, tbTitle.Text, tbDateBeg.Text, tbDateEnd.Text, cmbADStatus.Text,
+            Ad ad = new Ad(tbID.Text, tbTitle.Text, tbDateBeg.Text, tbDateEnd.Text, cmbADStatus.Text,
                 cmbCategory.Text, cmbGoodsType.Text, cmbCondition.Text, tbDescription.Text, cmbContactMethod.Text,
                 tbPrice.Text, tbAdress.Text, tbImages.Text, tbVideoURL.Text, cmbVendor.Text, cmbModel.Text, cmbColor.Text,
                 cmbROM.Text, cmbRAM.Text);
-            ListViewItem LVI = new ListViewItem(ad.Title);
-            LVI.Tag = ad;
-            ADsList.Items.Add(LVI);
+            Add(ad);
             ClearInput();
         }
 
@@ -46,10 +44,26 @@ namespace XMLSer
         {
             if (ADsList.SelectedItems.Count==1)
             {
-                ADData ad = (ADData)ADsList.SelectedItems[0].Tag;
+                Ad ad = (Ad)ADsList.SelectedItems[0].Tag;
                 if (ad!=null)
                 {
-
+                    tbID.Text = ad.Id;
+                    tbTitle.Text = ad.Title;
+                    tbDateBeg.Text = ad.DateBegin;
+                    tbDateEnd.Text = ad.DateEnd;
+                    cmbADStatus.Text = ad.AdStatus;
+                    cmbCategory.Text = ad.Category;
+                    cmbGoodsType.Text = ad.GoodsType;
+                    cmbCondition.Text = ad.Condition;
+                    tbDescription.Text = ad.Description;
+                    cmbContactMethod.Text = ad.ContactMethod;
+                    tbPrice.Text = ad.Price;
+                    tbAdress.Text = ad.Adress;
+                    tbImages.Text = ad.Images;
+                    tbVideoURL.Text = ad.VideoUrl;
+                    cmbVendor.Text = ad.Vendor;
+                    cmbModel.Text = ad.Model;
+                    cmbColor.Text = ad.Color;
                 }
                  
             }
@@ -64,12 +78,27 @@ namespace XMLSer
             XmlSerializer xmlSerializer = new XmlSerializer(ad.GetType());
             var xns = new XmlSerializerNamespaces();
             xns.Add(string.Empty, string.Empty);
-            using (FileStream fs = new FileStream("AdXML", FileMode.OpenOrCreate))
+            using (FileStream fs = new FileStream("Ads.xml", FileMode.OpenOrCreate))
             {
                 xmlSerializer.Serialize(fs, ad, xns);
                
             }
            
+        }
+        private ADs Deserialize()
+        {
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(ADs));
+            using (FileStream fs = new FileStream("Ads.xml", FileMode.OpenOrCreate))
+            {
+                return (ADs)xmlSerializer.Deserialize(fs);
+
+            }
+        }
+        private void Add(Ad ad)
+        {
+            ListViewItem LVI = new ListViewItem(ad.Title);
+            LVI.Tag = ad;
+            ADsList.Items.Add(LVI);
         }
         private void btSerialize_Click(object sender, EventArgs e)
         {
@@ -78,10 +107,20 @@ namespace XMLSer
             {
                 if (item.Tag!=null)
                 {
-                    ad.AdsList.Add((ADData)item.Tag);
+                    ad.ADList.Add((Ad)item.Tag);
                 }
             }
             Serialize(ad);
+        }
+
+        private void btDeserialize_Click(object sender, EventArgs e)
+        {
+            ClearInput();
+          ADs aDs =  Deserialize();
+            foreach (Ad ad in aDs.ADList)
+            {
+                Add(ad);
+            }
         }
     }
 }

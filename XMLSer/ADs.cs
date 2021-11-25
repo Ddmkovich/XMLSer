@@ -16,13 +16,13 @@ namespace XMLSer
         public string formatVersion = "3";
         [XmlAttribute("target")]
         public string target = "Avito.ru";
-
-        public List<ADData> AdsList { get; set; } = new List<ADData>();
+        [SoapIgnore]
+        public List<Ad> ADList { get; set; } = new List<Ad>();
     }
 
 
     [Serializable]
-    public class ADData
+    public class Ad
     {
         public string Id { get; set; }
         public string Title { get; set; }
@@ -47,8 +47,8 @@ namespace XMLSer
         public string MemorySize { get; set; }
         public string RamSize { get; set; }
 
-        public ADData() { }
-        public ADData(string Id, string Title, string DateBegin, string DateEnd, string AdStatus,
+        public Ad() { }
+        public Ad(string Id, string Title, string DateBegin, string DateEnd, string AdStatus,
             string Category, string GoodsType, string Condition, string Description,
             string ContactMethod, string Price, string Adress, string Images, string VideoUrl,
             string Vendor, string Model, string Color, string MemorySize, string RamSize)
