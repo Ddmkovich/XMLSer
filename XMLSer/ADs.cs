@@ -1,15 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Serialization;
 
 namespace XMLSer
 {
-
     [Serializable] 
-    public class ADs
+    public class Ads
     {
         //Атрибуты для авито
         [XmlAttribute("formatVersion")]
@@ -19,8 +15,6 @@ namespace XMLSer
         [SoapIgnore]
         public List<Ad> ADList { get; set; } = new List<Ad>();
     }
-
-
     [Serializable]
     public class Ad
     {
@@ -35,7 +29,7 @@ namespace XMLSer
         public string Description { get; set; }
         public string ContactMethod { get; set; }
         public string Price { get; set; }
-        public string Adress { get; set; }
+        public string Address { get; set; }
         public string Images { get; set; }
         //public List<Image> Images { get; set; } = new List<Image>();
         public string VideoUrl { get; set; }
@@ -50,7 +44,7 @@ namespace XMLSer
         public Ad() { }
         public Ad(string Id, string Title, string DateBegin, string DateEnd, string AdStatus,
             string Category, string GoodsType, string Condition, string Description,
-            string ContactMethod, string Price, string Adress, string Images, string VideoUrl,
+            string ContactMethod, string Price, string Address, string Images, string VideoUrl,
             string Vendor, string Model, string Color, string MemorySize, string RamSize)
         {
             this.Id = Id;
@@ -64,7 +58,7 @@ namespace XMLSer
             this.Condition = Condition;
             this.ContactMethod = ContactMethod;
             this.Price = Price;
-            this.Adress = Adress;
+            this.Address = Address;
             this.Images = Images;
             this.VideoUrl = VideoUrl;
             this.Vendor = Vendor;

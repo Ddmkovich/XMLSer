@@ -287,6 +287,12 @@
             this.cmbADStatus.AutoCompleteCustomSource.AddRange(new string[] {
             "Реклама"});
             this.cmbADStatus.FormattingEnabled = true;
+            this.cmbADStatus.Items.AddRange(new object[] {
+            "PushUp",
+            "VIP",
+            "QuickSale",
+            "Premium",
+            "TurboSale"});
             this.cmbADStatus.Location = new System.Drawing.Point(106, 176);
             this.cmbADStatus.Name = "cmbADStatus";
             this.cmbADStatus.Size = new System.Drawing.Size(121, 21);
@@ -352,6 +358,10 @@
             this.cmbContactMethod.AutoCompleteCustomSource.AddRange(new string[] {
             "Везде"});
             this.cmbContactMethod.FormattingEnabled = true;
+            this.cmbContactMethod.Items.AddRange(new object[] {
+            "По телефону и в сообщениях",
+            "По телефону",
+            "В сообщениях"});
             this.cmbContactMethod.Location = new System.Drawing.Point(106, 203);
             this.cmbContactMethod.Name = "cmbContactMethod";
             this.cmbContactMethod.Size = new System.Drawing.Size(121, 21);
@@ -407,6 +417,9 @@
             "Новый",
             "Старый"});
             this.cmbCondition.FormattingEnabled = true;
+            this.cmbCondition.Items.AddRange(new object[] {
+            "Новое",
+            "Б/у"});
             this.cmbCondition.Location = new System.Drawing.Point(106, 97);
             this.cmbCondition.Name = "cmbCondition";
             this.cmbCondition.Size = new System.Drawing.Size(121, 21);
@@ -418,6 +431,16 @@
             "PC"});
             this.cmbCategory.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.cmbCategory.FormattingEnabled = true;
+            this.cmbCategory.Items.AddRange(new object[] {
+            "Телефоны",
+            "Аудио и видео",
+            "Товары для компьютера",
+            "Фототехника",
+            "Игры, приставки и программы",
+            "Оргтехника и расходники",
+            "Планшеты и электронные книги",
+            "Ноутбуки",
+            "Настольные компьютеры"});
             this.cmbCategory.Location = new System.Drawing.Point(106, 43);
             this.cmbCategory.Name = "cmbCategory";
             this.cmbCategory.Size = new System.Drawing.Size(121, 21);

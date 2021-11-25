@@ -1,12 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 
@@ -28,7 +21,7 @@ namespace XMLSer
             tbPrice.Clear();
             tbVideoURL.Clear();
             tbImages.Clear();
-            cmbADStatus.SelectedIndex = 0;
+            
             
         }
         private void btCreate_Click(object sender, EventArgs e)
@@ -59,7 +52,7 @@ namespace XMLSer
                     tbDescription.Text = ad.Description;
                     cmbContactMethod.Text = ad.ContactMethod;
                     tbPrice.Text = ad.Price;
-                    tbAdress.Text = ad.Adress;
+                    tbAdress.Text = ad.Address;
                     tbImages.Text = ad.Images;
                     tbVideoURL.Text = ad.VideoUrl;
                     cmbVendor.Text = ad.Vendor;
@@ -74,7 +67,7 @@ namespace XMLSer
             }
         }
 
-        private void Serialize(ADs ad)
+        private void Serialize(Ads ad)
         {
             XmlSerializer xmlSerializer = new XmlSerializer(ad.GetType());
             var xns = new XmlSerializerNamespaces();
@@ -86,12 +79,12 @@ namespace XMLSer
             }
            
         }
-        private ADs Deserialize()
+        private Ads Deserialize()
         {
-            XmlSerializer xmlSerializer = new XmlSerializer(typeof(ADs));
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(Ads));
             using (FileStream fs = new FileStream("Ads.xml", FileMode.OpenOrCreate))
             {
-                return (ADs)xmlSerializer.Deserialize(fs);
+                return (Ads)xmlSerializer.Deserialize(fs);
 
             }
         }
@@ -103,7 +96,7 @@ namespace XMLSer
         }
         private void btSerialize_Click(object sender, EventArgs e)
         {
-            ADs ad = new ADs();
+            Ads ad = new Ads();
             foreach (ListViewItem item in ADsList.Items)
             {
                 if (item.Tag!=null)
@@ -116,8 +109,9 @@ namespace XMLSer
 
         private void btDeserialize_Click(object sender, EventArgs e)
         {
+            ADsList.Clear();
             ClearInput();
-          ADs aDs =  Deserialize();
+          Ads aDs =  Deserialize();
             foreach (Ad ad in aDs.ADList)
             {
                 Add(ad);
