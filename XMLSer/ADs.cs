@@ -7,13 +7,25 @@ namespace XMLSer
     [Serializable] 
     public class Ads
     {
+
         //Атрибуты для авито
         [XmlAttribute("formatVersion")]
         public string formatVersion = "3";
         [XmlAttribute("target")]
         public string target = "Avito.ru";
-        [SoapIgnore]
         public List<Ad> ADList { get; set; } = new List<Ad>();
+    }
+    [Serializable]
+    public class Image
+    {
+        [XmlElement("Image")]
+        public string ImageName { get; set; }
+        
+        public Image() { }
+        public Image(string ImageName)
+        {
+           this.ImageName = ImageName;
+        }
     }
     [Serializable]
     public class Ad
@@ -30,8 +42,9 @@ namespace XMLSer
         public string ContactMethod { get; set; }
         public string Price { get; set; }
         public string Address { get; set; }
-        public string Images { get; set; }
-        //public List<Image> Images { get; set; } = new List<Image>();
+        //public string Images { get; set; }
+        [XmlElement("Images")]
+        public List<Image> Images { get; set; } = new List<Image>();
         public string VideoUrl { get; set; }
 
         //Вторичные для телефона
@@ -44,7 +57,7 @@ namespace XMLSer
         public Ad() { }
         public Ad(string Id, string Title, string DateBegin, string DateEnd, string AdStatus,
             string Category, string GoodsType, string Condition, string Description,
-            string ContactMethod, string Price, string Address, string Images, string VideoUrl,
+            string ContactMethod, string Price, string Address,  List<Image> images, string VideoUrl,
             string Vendor, string Model, string Color, string MemorySize, string RamSize)
         {
             this.Id = Id;
@@ -59,7 +72,7 @@ namespace XMLSer
             this.ContactMethod = ContactMethod;
             this.Price = Price;
             this.Address = Address;
-            this.Images = Images;
+            this.Images = images;
             this.VideoUrl = VideoUrl;
             this.Vendor = Vendor;
             this.Model = Model;

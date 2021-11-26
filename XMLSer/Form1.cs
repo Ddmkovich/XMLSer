@@ -1,15 +1,18 @@
 ﻿using System;
 using System.IO;
 using System.Windows.Forms;
+using System.Collections.Generic;
 using System.Xml.Serialization;
 
 namespace XMLSer
 {
     public partial class Form1 : Form
     {
+        List<Image> images = new List<Image>();
         public Form1()
         {
             InitializeComponent();
+            ClearInput();
         }
         private void ClearInput()
         {
@@ -20,15 +23,23 @@ namespace XMLSer
             tbDescription.Clear();
             tbPrice.Clear();
             tbVideoURL.Clear();
-            tbImages.Clear();
-            
-            
+            ofdImages.Reset();
+            cmbCategory.SelectedIndex = 0;
+            cmbADStatus.SelectedIndex = 0;
+            cmbColor.SelectedIndex = 0;
+            cmbCondition.SelectedIndex = 0;
+            cmbContactMethod.SelectedIndex = 0;
+            cmbGoodsType.SelectedIndex = 0;
+            cmbModel.SelectedIndex = 0;
+            cmbRAM.SelectedIndex = 0;
+            cmbROM.SelectedIndex = 0;
+            cmbVendor.SelectedIndex = 0;            
         }
         private void btCreate_Click(object sender, EventArgs e)
         {
             Ad ad = new Ad(tbID.Text, tbTitle.Text, tbDateBeg.Text, tbDateEnd.Text, cmbADStatus.Text,
                 cmbCategory.Text, cmbGoodsType.Text, cmbCondition.Text, tbDescription.Text, cmbContactMethod.Text,
-                tbPrice.Text, tbAdress.Text, tbImages.Text, tbVideoURL.Text, cmbVendor.Text, cmbModel.Text, cmbColor.Text,
+                tbPrice.Text, tbAdress.Text, images , tbVideoURL.Text = "url="+'\u0022'+ tbVideoURL.Text +'\u0022', cmbVendor.Text, cmbModel.Text, cmbColor.Text,
                 cmbROM.Text, cmbRAM.Text);
             Add(ad);
             ClearInput();
@@ -53,7 +64,6 @@ namespace XMLSer
                     cmbContactMethod.Text = ad.ContactMethod;
                     tbPrice.Text = ad.Price;
                     tbAdress.Text = ad.Address;
-                    tbImages.Text = ad.Images;
                     tbVideoURL.Text = ad.VideoUrl;
                     cmbVendor.Text = ad.Vendor;
                     cmbModel.Text = ad.Model;
@@ -115,6 +125,24 @@ namespace XMLSer
             foreach (Ad ad in aDs.ADList)
             {
                 Add(ad);
+            }
+        }
+
+        private void btAddImage_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Multiselect = true;
+            if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                
+                foreach (var x in openFileDialog.FileNames)
+                {
+                    tbImgName.Text += openFileDialog.FileName;
+                    Image image = new Image();
+                    image.ImageName = "url=" + '\u0022' + x + '\u0022';
+                    images.Add(image);
+                }
+
             }
         }
     }

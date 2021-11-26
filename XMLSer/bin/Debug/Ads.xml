@@ -2,22 +2,22 @@
 <Ads formatVersion="3" target="Avito.ru">
   <ADList>
     <Ad>
-      <Id>101</Id>
-      <Title>Бибос</Title>
-      <DateBegin>10.10.2021</DateBegin>
-      <DateEnd>31.10.2021</DateEnd>
+      <Id>11</Id>
+      <Title>Абакан</Title>
+      <DateBegin />
+      <DateEnd />
       <AdStatus>PushUp</AdStatus>
       <Category>Настольные компьютеры</Category>
       <GoodsType />
-      <Condition>Новое</Condition>
-      <Description>вфыврофрщвцврофроывл</Description>
-      <ContactMethod>По телефону</ContactMethod>
-      <Price>12000</Price>
+      <Condition>Б/у</Condition>
+      <Description>123123</Description>
+      <ContactMethod>По телефону и в сообщениях</ContactMethod>
+      <Price>123</Price>
       <Address>г. Абакан</Address>
       <Images>
 			<Image url="https://images.samsung.com/is/image/samsung/ru-galaxy-s10-g973-sm-g973fzkdser-backprismblack-147071769?$PD_GALLERY_L_SHOP_JPG$"/>
 		</Images>
-      <VideoUrl />
+      <VideoUrl>url=""</VideoUrl>
       <Vendor />
       <Model />
       <Color />

@@ -30,7 +30,6 @@
         {
             this.ADsList = new System.Windows.Forms.ListView();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.tbImages = new System.Windows.Forms.TextBox();
             this.tbID = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.cmbROM = new System.Windows.Forms.ComboBox();
@@ -73,6 +72,9 @@
             this.btCreate = new System.Windows.Forms.Button();
             this.btDeserialize = new System.Windows.Forms.Button();
             this.btSerialize = new System.Windows.Forms.Button();
+            this.ofdImages = new System.Windows.Forms.OpenFileDialog();
+            this.btAddImage = new System.Windows.Forms.Button();
+            this.tbImgName = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -91,7 +93,8 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.tbImages);
+            this.panel1.Controls.Add(this.tbImgName);
+            this.panel1.Controls.Add(this.btAddImage);
             this.panel1.Controls.Add(this.tbID);
             this.panel1.Controls.Add(this.label21);
             this.panel1.Controls.Add(this.cmbROM);
@@ -136,14 +139,6 @@
             this.panel1.Size = new System.Drawing.Size(590, 565);
             this.panel1.TabIndex = 1;
             // 
-            // tbImages
-            // 
-            this.tbImages.Location = new System.Drawing.Point(106, 371);
-            this.tbImages.Multiline = true;
-            this.tbImages.Name = "tbImages";
-            this.tbImages.Size = new System.Drawing.Size(464, 135);
-            this.tbImages.TabIndex = 42;
-            // 
             // tbID
             // 
             this.tbID.Location = new System.Drawing.Point(106, 17);
@@ -164,7 +159,11 @@
             // 
             this.cmbROM.AutoCompleteCustomSource.AddRange(new string[] {
             "12мб"});
+            this.cmbROM.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbROM.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbROM.FormattingEnabled = true;
+            this.cmbROM.Items.AddRange(new object[] {
+            "--Память--"});
             this.cmbROM.Location = new System.Drawing.Point(363, 151);
             this.cmbROM.Name = "cmbROM";
             this.cmbROM.Size = new System.Drawing.Size(121, 21);
@@ -174,7 +173,11 @@
             // 
             this.cmbRAM.AutoCompleteCustomSource.AddRange(new string[] {
             "256мб"});
+            this.cmbRAM.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbRAM.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbRAM.FormattingEnabled = true;
+            this.cmbRAM.Items.AddRange(new object[] {
+            "--Память--"});
             this.cmbRAM.Location = new System.Drawing.Point(363, 125);
             this.cmbRAM.Name = "cmbRAM";
             this.cmbRAM.Size = new System.Drawing.Size(121, 21);
@@ -184,7 +187,11 @@
             // 
             this.cmbColor.AutoCompleteCustomSource.AddRange(new string[] {
             "Коричневый"});
+            this.cmbColor.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbColor.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbColor.FormattingEnabled = true;
+            this.cmbColor.Items.AddRange(new object[] {
+            "--Цвета--"});
             this.cmbColor.Location = new System.Drawing.Point(363, 98);
             this.cmbColor.Name = "cmbColor";
             this.cmbColor.Size = new System.Drawing.Size(121, 21);
@@ -194,7 +201,11 @@
             // 
             this.cmbModel.AutoCompleteCustomSource.AddRange(new string[] {
             "Кал"});
+            this.cmbModel.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbModel.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbModel.FormattingEnabled = true;
+            this.cmbModel.Items.AddRange(new object[] {
+            "--Модель--"});
             this.cmbModel.Location = new System.Drawing.Point(363, 71);
             this.cmbModel.Name = "cmbModel";
             this.cmbModel.Size = new System.Drawing.Size(121, 21);
@@ -204,7 +215,11 @@
             // 
             this.cmbVendor.AutoCompleteCustomSource.AddRange(new string[] {
             "Аппле"});
+            this.cmbVendor.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbVendor.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbVendor.FormattingEnabled = true;
+            this.cmbVendor.Items.AddRange(new object[] {
+            "--Бренд--"});
             this.cmbVendor.Location = new System.Drawing.Point(363, 44);
             this.cmbVendor.Name = "cmbVendor";
             this.cmbVendor.Size = new System.Drawing.Size(121, 21);
@@ -276,7 +291,10 @@
             // 
             this.cmbGoodsType.AutoCompleteCustomSource.AddRange(new string[] {
             "Мощный"});
+            this.cmbGoodsType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cmbGoodsType.FormattingEnabled = true;
+            this.cmbGoodsType.Items.AddRange(new object[] {
+            "--Подкатегории--"});
             this.cmbGoodsType.Location = new System.Drawing.Point(106, 70);
             this.cmbGoodsType.Name = "cmbGoodsType";
             this.cmbGoodsType.Size = new System.Drawing.Size(121, 21);
@@ -286,8 +304,11 @@
             // 
             this.cmbADStatus.AutoCompleteCustomSource.AddRange(new string[] {
             "Реклама"});
+            this.cmbADStatus.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbADStatus.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbADStatus.FormattingEnabled = true;
             this.cmbADStatus.Items.AddRange(new object[] {
+            "--Реклама--",
             "PushUp",
             "VIP",
             "QuickSale",
@@ -357,8 +378,11 @@
             // 
             this.cmbContactMethod.AutoCompleteCustomSource.AddRange(new string[] {
             "Везде"});
+            this.cmbContactMethod.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbContactMethod.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbContactMethod.FormattingEnabled = true;
             this.cmbContactMethod.Items.AddRange(new object[] {
+            "--Метод связи--",
             "По телефону и в сообщениях",
             "По телефону",
             "В сообщениях"});
@@ -416,8 +440,11 @@
             this.cmbCondition.AutoCompleteCustomSource.AddRange(new string[] {
             "Новый",
             "Старый"});
+            this.cmbCondition.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbCondition.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbCondition.FormattingEnabled = true;
             this.cmbCondition.Items.AddRange(new object[] {
+            "--Состояния--",
             "Новое",
             "Б/у"});
             this.cmbCondition.Location = new System.Drawing.Point(106, 97);
@@ -429,9 +456,11 @@
             // 
             this.cmbCategory.AutoCompleteCustomSource.AddRange(new string[] {
             "PC"});
-            this.cmbCategory.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cmbCategory.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbCategory.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbCategory.FormattingEnabled = true;
             this.cmbCategory.Items.AddRange(new object[] {
+            "--Категории--",
             "Телефоны",
             "Аудио и видео",
             "Товары для компьютера",
@@ -545,6 +574,29 @@
             this.btSerialize.UseVisualStyleBackColor = true;
             this.btSerialize.Click += new System.EventHandler(this.btSerialize_Click);
             // 
+            // ofdImages
+            // 
+            this.ofdImages.FileName = "openFileDialog1";
+            this.ofdImages.Multiselect = true;
+            // 
+            // btAddImage
+            // 
+            this.btAddImage.Location = new System.Drawing.Point(90, 426);
+            this.btAddImage.Name = "btAddImage";
+            this.btAddImage.Size = new System.Drawing.Size(75, 23);
+            this.btAddImage.TabIndex = 42;
+            this.btAddImage.Text = "Добавить";
+            this.btAddImage.UseVisualStyleBackColor = true;
+            this.btAddImage.Click += new System.EventHandler(this.btAddImage_Click);
+            // 
+            // tbImgName
+            // 
+            this.tbImgName.Location = new System.Drawing.Point(171, 390);
+            this.tbImgName.Multiline = true;
+            this.tbImgName.Name = "tbImgName";
+            this.tbImgName.Size = new System.Drawing.Size(389, 116);
+            this.tbImgName.TabIndex = 43;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -608,8 +660,10 @@
         private System.Windows.Forms.Button btDeserialize;
         private System.Windows.Forms.TextBox tbID;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.TextBox tbImages;
         private System.Windows.Forms.Button btSerialize;
+        private System.Windows.Forms.OpenFileDialog ofdImages;
+        private System.Windows.Forms.Button btAddImage;
+        private System.Windows.Forms.TextBox tbImgName;
     }
 }
 
