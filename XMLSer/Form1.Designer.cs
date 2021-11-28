@@ -30,6 +30,8 @@
         {
             this.ADsList = new System.Windows.Forms.ListView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tbImgName = new System.Windows.Forms.TextBox();
+            this.btAddImage = new System.Windows.Forms.Button();
             this.tbID = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.cmbROM = new System.Windows.Forms.ComboBox();
@@ -73,8 +75,6 @@
             this.btDeserialize = new System.Windows.Forms.Button();
             this.btSerialize = new System.Windows.Forms.Button();
             this.ofdImages = new System.Windows.Forms.OpenFileDialog();
-            this.btAddImage = new System.Windows.Forms.Button();
-            this.tbImgName = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -138,6 +138,24 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(590, 565);
             this.panel1.TabIndex = 1;
+            // 
+            // tbImgName
+            // 
+            this.tbImgName.Location = new System.Drawing.Point(171, 390);
+            this.tbImgName.Multiline = true;
+            this.tbImgName.Name = "tbImgName";
+            this.tbImgName.Size = new System.Drawing.Size(389, 116);
+            this.tbImgName.TabIndex = 43;
+            // 
+            // btAddImage
+            // 
+            this.btAddImage.Location = new System.Drawing.Point(90, 426);
+            this.btAddImage.Name = "btAddImage";
+            this.btAddImage.Size = new System.Drawing.Size(75, 23);
+            this.btAddImage.TabIndex = 42;
+            this.btAddImage.Text = "Добавить";
+            this.btAddImage.UseVisualStyleBackColor = true;
+            this.btAddImage.Click += new System.EventHandler(this.btAddImage_Click);
             // 
             // tbID
             // 
@@ -578,24 +596,6 @@
             // 
             this.ofdImages.FileName = "openFileDialog1";
             this.ofdImages.Multiselect = true;
-            // 
-            // btAddImage
-            // 
-            this.btAddImage.Location = new System.Drawing.Point(90, 426);
-            this.btAddImage.Name = "btAddImage";
-            this.btAddImage.Size = new System.Drawing.Size(75, 23);
-            this.btAddImage.TabIndex = 42;
-            this.btAddImage.Text = "Добавить";
-            this.btAddImage.UseVisualStyleBackColor = true;
-            this.btAddImage.Click += new System.EventHandler(this.btAddImage_Click);
-            // 
-            // tbImgName
-            // 
-            this.tbImgName.Location = new System.Drawing.Point(171, 390);
-            this.tbImgName.Multiline = true;
-            this.tbImgName.Name = "tbImgName";
-            this.tbImgName.Size = new System.Drawing.Size(389, 116);
-            this.tbImgName.TabIndex = 43;
             // 
             // Form1
             // 

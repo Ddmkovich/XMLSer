@@ -2,22 +2,57 @@
 <Ads formatVersion="3" target="Avito.ru">
   <ADList>
     <Ad>
-      <Id>11</Id>
+      <Id>123</Id>
       <Title>Абакан</Title>
-      <DateBegin />
-      <DateEnd />
+      <DateBegin>12.10.2021</DateBegin>
+      <DateEnd>12.12.2021</DateEnd>
       <AdStatus>PushUp</AdStatus>
       <Category>Настольные компьютеры</Category>
       <GoodsType />
-      <Condition>Б/у</Condition>
-      <Description>123123</Description>
+      <Condition>Новое</Condition>
+      <Description>Абакан</Description>
       <ContactMethod>По телефону и в сообщениях</ContactMethod>
-      <Price>123</Price>
-      <Address>г. Абакан</Address>
+      <Price>12300</Price>
+      <Address>г.Абакан</Address>
       <Images>
-			<Image url="https://images.samsung.com/is/image/samsung/ru-galaxy-s10-g973-sm-g973fzkdser-backprismblack-147071769?$PD_GALLERY_L_SHOP_JPG$"/>
-		</Images>
-      <VideoUrl>url=""</VideoUrl>
+        <Image url="C:\Users\Dmitriy\Desktop\Screenshot_1.png"/>
+        <Image url="C:\Users\Dmitriy\Desktop\отчёт 5.docx"/>
+        <Image url="C:\Users\Dmitriy\Desktop\Пример отчёта.docx"/>
+        <Image url="C:\Users\Dmitriy\Desktop\5. Многопоточное программирование.docx"/>
+        <Image url="C:\Users\Dmitriy\Desktop\Screenshot_1.png"/>
+        <Image url="C:\Users\Dmitriy\Desktop\отчёт 5.docx"/>
+        <Image url="C:\Users\Dmitriy\Desktop\Пример отчёта.docx"/>
+      </Images>
+      <VideoUrl>url="фывцвфыв"</VideoUrl>
+      <Vendor />
+      <Model />
+      <Color />
+      <MemorySize />
+      <RamSize />
+    </Ad>
+    <Ad>
+      <Id>123</Id>
+      <Title>Абоба</Title>
+      <DateBegin>31,12,2021</DateBegin>
+      <DateEnd>01,01,2021</DateEnd>
+      <AdStatus>QuickSale</AdStatus>
+      <Category>Настольные компьютеры</Category>
+      <GoodsType>фывц</GoodsType>
+      <Condition>Новое</Condition>
+      <Description>МОщный МОнстр</Description>
+      <ContactMethod>По телефону и в сообщениях</ContactMethod>
+      <Price>12-00</Price>
+      <Address>г.Абакан</Address>
+      <Images>
+        <Image url="C:\Users\Dmitriy\Desktop\Screenshot_1.png"/>
+        <Image url="C:\Users\Dmitriy\Desktop\отчёт 5.docx"/>
+        <Image url="C:\Users\Dmitriy\Desktop\Пример отчёта.docx"/>
+        <Image url="C:\Users\Dmitriy\Desktop\5. Многопоточное программирование.docx"/>
+        <Image url="C:\Users\Dmitriy\Desktop\Screenshot_1.png"/>
+        <Image url="C:\Users\Dmitriy\Desktop\отчёт 5.docx"/>
+        <Image url="C:\Users\Dmitriy\Desktop\Пример отчёта.docx"/>
+      </Images>
+      <VideoUrl>url="фывфцвыв"</VideoUrl>
       <Vendor />
       <Model />
       <Color />

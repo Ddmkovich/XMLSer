@@ -3,12 +3,14 @@ using System.IO;
 using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Xml.Serialization;
+using System.Text.RegularExpressions;
 
 namespace XMLSer
 {
     public partial class Form1 : Form
     {
-        List<Image> images = new List<Image>();
+        List<string> images = new List<string>();
+        OpenFileDialog openFileDialog = new OpenFileDialog();
         public Form1()
         {
             InitializeComponent();
@@ -115,6 +117,15 @@ namespace XMLSer
                 }
             }
             Serialize(ad);
+            var xml = File.ReadAllText("Ads.xml");
+            var firstImageIdx = xml.IndexOf("<Image>");
+            var secondImageIdx = xml.IndexOf("</Image>", firstImageIdx + 1);
+
+            var correctedXml = xml.Replace("<Image>", "<Image ");
+            xml = correctedXml;
+            xml = xml.Replace("</Image>", "/>");
+
+            File.WriteAllText("Ads.xml", xml);
         }
 
         private void btDeserialize_Click(object sender, EventArgs e)
@@ -130,7 +141,7 @@ namespace XMLSer
 
         private void btAddImage_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
+            
             openFileDialog.Multiselect = true;
             if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
@@ -138,12 +149,13 @@ namespace XMLSer
                 foreach (var x in openFileDialog.FileNames)
                 {
                     tbImgName.Text += openFileDialog.FileName;
-                    Image image = new Image();
-                    image.ImageName = "url=" + '\u0022' + x + '\u0022';
+                    string image= "url=" + '\u0022' + x + '\u0022';
                     images.Add(image);
                 }
 
             }
         }
+
+        
     }
 }

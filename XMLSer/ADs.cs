@@ -15,18 +15,7 @@ namespace XMLSer
         public string target = "Avito.ru";
         public List<Ad> ADList { get; set; } = new List<Ad>();
     }
-    [Serializable]
-    public class Image
-    {
-        [XmlElement("Image")]
-        public string ImageName { get; set; }
-        
-        public Image() { }
-        public Image(string ImageName)
-        {
-           this.ImageName = ImageName;
-        }
-    }
+
     [Serializable]
     public class Ad
     {
@@ -43,8 +32,9 @@ namespace XMLSer
         public string Price { get; set; }
         public string Address { get; set; }
         //public string Images { get; set; }
-        [XmlElement("Images")]
-        public List<Image> Images { get; set; } = new List<Image>();
+        [XmlArrayItem("Image")]
+        [SoapAttribute]
+        public List<string> Images { get; set; } = new List<string>();
         public string VideoUrl { get; set; }
 
         //Вторичные для телефона
@@ -57,7 +47,7 @@ namespace XMLSer
         public Ad() { }
         public Ad(string Id, string Title, string DateBegin, string DateEnd, string AdStatus,
             string Category, string GoodsType, string Condition, string Description,
-            string ContactMethod, string Price, string Address,  List<Image> images, string VideoUrl,
+            string ContactMethod, string Price, string Address,  List<string> images, string VideoUrl,
             string Vendor, string Model, string Color, string MemorySize, string RamSize)
         {
             this.Id = Id;
