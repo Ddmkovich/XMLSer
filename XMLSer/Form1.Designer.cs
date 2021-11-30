@@ -30,7 +30,6 @@
         {
             this.ADsList = new System.Windows.Forms.ListView();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.tbImgName = new System.Windows.Forms.TextBox();
             this.btAddImage = new System.Windows.Forms.Button();
             this.tbID = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
@@ -75,6 +74,7 @@
             this.btDeserialize = new System.Windows.Forms.Button();
             this.btSerialize = new System.Windows.Forms.Button();
             this.ofdImages = new System.Windows.Forms.OpenFileDialog();
+            this.tbImgName = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -138,14 +138,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(590, 565);
             this.panel1.TabIndex = 1;
-            // 
-            // tbImgName
-            // 
-            this.tbImgName.Location = new System.Drawing.Point(171, 390);
-            this.tbImgName.Multiline = true;
-            this.tbImgName.Name = "tbImgName";
-            this.tbImgName.Size = new System.Drawing.Size(389, 116);
-            this.tbImgName.TabIndex = 43;
             // 
             // btAddImage
             // 
@@ -310,6 +302,7 @@
             this.cmbGoodsType.AutoCompleteCustomSource.AddRange(new string[] {
             "Мощный"});
             this.cmbGoodsType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbGoodsType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbGoodsType.FormattingEnabled = true;
             this.cmbGoodsType.Items.AddRange(new object[] {
             "--Подкатегории--"});
@@ -327,6 +320,7 @@
             this.cmbADStatus.FormattingEnabled = true;
             this.cmbADStatus.Items.AddRange(new object[] {
             "--Реклама--",
+            "Free",
             "PushUp",
             "VIP",
             "QuickSale",
@@ -492,6 +486,7 @@
             this.cmbCategory.Name = "cmbCategory";
             this.cmbCategory.Size = new System.Drawing.Size(121, 21);
             this.cmbCategory.TabIndex = 10;
+            this.cmbCategory.SelectedIndexChanged += new System.EventHandler(this.cmbCategory_SelectedIndexChanged);
             // 
             // tbPrice
             // 
@@ -596,6 +591,14 @@
             // 
             this.ofdImages.FileName = "openFileDialog1";
             this.ofdImages.Multiselect = true;
+            // 
+            // tbImgName
+            // 
+            this.tbImgName.Location = new System.Drawing.Point(171, 410);
+            this.tbImgName.Multiline = true;
+            this.tbImgName.Name = "tbImgName";
+            this.tbImgName.Size = new System.Drawing.Size(399, 57);
+            this.tbImgName.TabIndex = 43;
             // 
             // Form1
             // 

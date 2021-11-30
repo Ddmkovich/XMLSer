@@ -2,62 +2,50 @@
 <Ads formatVersion="3" target="Avito.ru">
   <ADList>
     <Ad>
-      <Id>123</Id>
-      <Title>Абакан</Title>
-      <DateBegin>12.10.2021</DateBegin>
-      <DateEnd>12.12.2021</DateEnd>
-      <AdStatus>PushUp</AdStatus>
-      <Category>Настольные компьютеры</Category>
+      <Id>3</Id>
+      <Title>asdwd</Title>
+      <DateBegin />
+      <DateEnd />
+      <AdStatus>--Реклама--</AdStatus>
+      <Category>--Категории--</Category>
       <GoodsType />
-      <Condition>Новое</Condition>
-      <Description>Абакан</Description>
-      <ContactMethod>По телефону и в сообщениях</ContactMethod>
-      <Price>12300</Price>
-      <Address>г.Абакан</Address>
+      <Condition>--Состояния--</Condition>
+      <Description />
+      <ContactMethod>--Метод связи--</ContactMethod>
+      <Price />
+      <Address />
       <Images>
-        <Image url="C:\Users\Dmitriy\Desktop\Screenshot_1.png"/>
-        <Image url="C:\Users\Dmitriy\Desktop\отчёт 5.docx"/>
-        <Image url="C:\Users\Dmitriy\Desktop\Пример отчёта.docx"/>
-        <Image url="C:\Users\Dmitriy\Desktop\5. Многопоточное программирование.docx"/>
-        <Image url="C:\Users\Dmitriy\Desktop\Screenshot_1.png"/>
-        <Image url="C:\Users\Dmitriy\Desktop\отчёт 5.docx"/>
-        <Image url="C:\Users\Dmitriy\Desktop\Пример отчёта.docx"/>
+        <Image>url="C:\Users\Dmitriy\Downloads\Vedmak_Karta_mira.png"</Image>
       </Images>
-      <VideoUrl>url="фывцвфыв"</VideoUrl>
-      <Vendor />
-      <Model />
-      <Color />
-      <MemorySize />
-      <RamSize />
+      <VideoUrl>url=""</VideoUrl>
+      <Vendor>--Бренд--</Vendor>
+      <Model>--Модель--</Model>
+      <Color>--Цвета--</Color>
+      <MemorySize>--Память--</MemorySize>
+      <RamSize>--Память--</RamSize>
     </Ad>
     <Ad>
       <Id>123</Id>
-      <Title>Абоба</Title>
-      <DateBegin>31,12,2021</DateBegin>
-      <DateEnd>01,01,2021</DateEnd>
-      <AdStatus>QuickSale</AdStatus>
-      <Category>Настольные компьютеры</Category>
-      <GoodsType>фывц</GoodsType>
-      <Condition>Новое</Condition>
-      <Description>МОщный МОнстр</Description>
-      <ContactMethod>По телефону и в сообщениях</ContactMethod>
-      <Price>12-00</Price>
-      <Address>г.Абакан</Address>
+      <Title>l;'l;'</Title>
+      <DateBegin />
+      <DateEnd />
+      <AdStatus>--Реклама--</AdStatus>
+      <Category>--Категории--</Category>
+      <GoodsType />
+      <Condition>--Состояния--</Condition>
+      <Description />
+      <ContactMethod>--Метод связи--</ContactMethod>
+      <Price />
+      <Address />
       <Images>
-        <Image url="C:\Users\Dmitriy\Desktop\Screenshot_1.png"/>
-        <Image url="C:\Users\Dmitriy\Desktop\отчёт 5.docx"/>
-        <Image url="C:\Users\Dmitriy\Desktop\Пример отчёта.docx"/>
-        <Image url="C:\Users\Dmitriy\Desktop\5. Многопоточное программирование.docx"/>
-        <Image url="C:\Users\Dmitriy\Desktop\Screenshot_1.png"/>
-        <Image url="C:\Users\Dmitriy\Desktop\отчёт 5.docx"/>
-        <Image url="C:\Users\Dmitriy\Desktop\Пример отчёта.docx"/>
+        <Image>url="C:\Users\Dmitriy\Downloads\Игра навылет Частный детектив Sleuth (Джозеф Лео Манкевич Joseph L. Mankiewicz) [1972, США, Великобритания, триллер, детекти [rutracker-4073190].torrent"</Image>
       </Images>
-      <VideoUrl>url="фывфцвыв"</VideoUrl>
-      <Vendor />
-      <Model />
-      <Color />
-      <MemorySize />
-      <RamSize />
+      <VideoUrl>url=""</VideoUrl>
+      <Vendor>--Бренд--</Vendor>
+      <Model>--Модель--</Model>
+      <Color>--Цвета--</Color>
+      <MemorySize>--Память--</MemorySize>
+      <RamSize>--Память--</RamSize>
     </Ad>
   </ADList>
 </Ads>

@@ -4,7 +4,7 @@ using System.Xml.Serialization;
 
 namespace XMLSer
 {
-    [Serializable] 
+    [Serializable]
     public class Ads
     {
 
@@ -33,7 +33,6 @@ namespace XMLSer
         public string Address { get; set; }
         //public string Images { get; set; }
         [XmlArrayItem("Image")]
-        [SoapAttribute]
         public List<string> Images { get; set; } = new List<string>();
         public string VideoUrl { get; set; }
 
@@ -47,7 +46,7 @@ namespace XMLSer
         public Ad() { }
         public Ad(string Id, string Title, string DateBegin, string DateEnd, string AdStatus,
             string Category, string GoodsType, string Condition, string Description,
-            string ContactMethod, string Price, string Address,  List<string> images, string VideoUrl,
+            string ContactMethod, string Price, string Address, List<string> images, string VideoUrl,
             string Vendor, string Model, string Color, string MemorySize, string RamSize)
         {
             this.Id = Id;
@@ -56,13 +55,13 @@ namespace XMLSer
             this.DateBegin = DateBegin;
             this.DateEnd = DateEnd;
             this.AdStatus = AdStatus;
-            this.Category = Category;   
+            this.Category = Category;
             this.GoodsType = GoodsType;
             this.Condition = Condition;
             this.ContactMethod = ContactMethod;
             this.Price = Price;
             this.Address = Address;
-            this.Images = images;
+            this.Images.AddRange(images);
             this.VideoUrl = VideoUrl;
             this.Vendor = Vendor;
             this.Model = Model;
