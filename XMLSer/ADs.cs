@@ -31,11 +31,15 @@ namespace XMLSer
         public string ContactMethod { get; set; }
         public string Price { get; set; }
         public string Address { get; set; }
-        //public string Images { get; set; }
         [XmlArrayItem("Image")]
         public List<string> Images { get; set; } = new List<string>();
         public string VideoUrl { get; set; }
 
+        //Вторичные для личных вещей
+        public string AdType { get; set; }
+        public string Apparel { get; set; }
+        public string ApparelType { get; set; }
+        public string Size { get; set; }
         //Вторичные для телефона
         public string Vendor { get; set; }
         public string Model { get; set; }
@@ -43,11 +47,14 @@ namespace XMLSer
         public string MemorySize { get; set; }
         public string RamSize { get; set; }
 
+        //Пустой конструктор необходим для сериализации
         public Ad() { }
+        //Не пустой конструктор для заполнения данных
         public Ad(string Id, string Title, string DateBegin, string DateEnd, string AdStatus,
             string Category, string GoodsType, string Condition, string Description,
             string ContactMethod, string Price, string Address, List<string> images, string VideoUrl,
-            string Vendor, string Model, string Color, string MemorySize, string RamSize)
+            string Vendor, string Model, string Color, string MemorySize, string RamSize, string AdType,
+            string Apparel,string ApparelType, string Size)
         {
             this.Id = Id;
             this.Title = Title;
@@ -63,6 +70,10 @@ namespace XMLSer
             this.Address = Address;
             this.Images.AddRange(images);
             this.VideoUrl = VideoUrl;
+            this.AdType = AdType;
+            this.Apparel = Apparel;
+            this.ApparelType = ApparelType;
+            this.Size = Size;
             this.Vendor = Vendor;
             this.Model = Model;
             this.Color = Color;

@@ -2,50 +2,31 @@
 <Ads formatVersion="3" target="Avito.ru">
   <ADList>
     <Ad>
-      <Id>3</Id>
-      <Title>asdwd</Title>
-      <DateBegin />
-      <DateEnd />
-      <AdStatus>--Реклама--</AdStatus>
-      <Category>--Категории--</Category>
-      <GoodsType />
-      <Condition>--Состояния--</Condition>
-      <Description />
-      <ContactMethod>--Метод связи--</ContactMethod>
-      <Price />
-      <Address />
+      <Id>1</Id>
+      <Title>Абоба</Title>
+      <DateBegin>01.12.2021</DateBegin>
+      <DateEnd>31.12.2021</DateEnd>
+      <AdStatus>Free</AdStatus>
+      <Category>Ноутбуки</Category>
+      <GoodsType>Acer</GoodsType>
+      <Condition>Новое</Condition>
+      <Description>lol</Description>
+      <ContactMethod>По телефону и в сообщениях</ContactMethod>
+      <Price>123</Price>
+      <Address>г Абакан</Address>
       <Images>
-        <Image>url="C:\Users\Dmitriy\Downloads\Vedmak_Karta_mira.png"</Image>
+        <Image>url="C:\Users\Dmitriy\Downloads\Movavi Video Editor Plus 22.0.0 RePack (&amp; Portable) by TryRooM [2021,Multi Ru] [rutracker-6122462].torrent"</Image>
       </Images>
       <VideoUrl>url=""</VideoUrl>
-      <Vendor>--Бренд--</Vendor>
-      <Model>--Модель--</Model>
-      <Color>--Цвета--</Color>
-      <MemorySize>--Память--</MemorySize>
-      <RamSize>--Память--</RamSize>
-    </Ad>
-    <Ad>
-      <Id>123</Id>
-      <Title>l;'l;'</Title>
-      <DateBegin />
-      <DateEnd />
-      <AdStatus>--Реклама--</AdStatus>
-      <Category>--Категории--</Category>
-      <GoodsType />
-      <Condition>--Состояния--</Condition>
-      <Description />
-      <ContactMethod>--Метод связи--</ContactMethod>
-      <Price />
-      <Address />
-      <Images>
-        <Image>url="C:\Users\Dmitriy\Downloads\Игра навылет Частный детектив Sleuth (Джозеф Лео Манкевич Joseph L. Mankiewicz) [1972, США, Великобритания, триллер, детекти [rutracker-4073190].torrent"</Image>
-      </Images>
-      <VideoUrl>url=""</VideoUrl>
-      <Vendor>--Бренд--</Vendor>
-      <Model>--Модель--</Model>
-      <Color>--Цвета--</Color>
-      <MemorySize>--Память--</MemorySize>
-      <RamSize>--Память--</RamSize>
+      <AdType />
+      <Apparel />
+      <ApparelType />
+      <Size />
+      <Vendor />
+      <Model />
+      <Color />
+      <MemorySize />
+      <RamSize />
     </Ad>
   </ADList>
 </Ads>

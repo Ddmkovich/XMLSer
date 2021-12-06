@@ -30,6 +30,17 @@
         {
             this.ADsList = new System.Windows.Forms.ListView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.dtpEnd = new System.Windows.Forms.DateTimePicker();
+            this.dtpBeg = new System.Windows.Forms.DateTimePicker();
+            this.cmbApparelType = new System.Windows.Forms.ComboBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.cmbApparel = new System.Windows.Forms.ComboBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.cmbAdType = new System.Windows.Forms.ComboBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.cmbSize = new System.Windows.Forms.ComboBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.tbImgName = new System.Windows.Forms.TextBox();
             this.btAddImage = new System.Windows.Forms.Button();
             this.tbID = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
@@ -47,8 +58,6 @@
             this.label14 = new System.Windows.Forms.Label();
             this.cmbGoodsType = new System.Windows.Forms.ComboBox();
             this.cmbADStatus = new System.Windows.Forms.ComboBox();
-            this.tbDateEnd = new System.Windows.Forms.TextBox();
-            this.tbDateBeg = new System.Windows.Forms.TextBox();
             this.tbVideoURL = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -74,7 +83,6 @@
             this.btDeserialize = new System.Windows.Forms.Button();
             this.btSerialize = new System.Windows.Forms.Button();
             this.ofdImages = new System.Windows.Forms.OpenFileDialog();
-            this.tbImgName = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -93,6 +101,16 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.dtpEnd);
+            this.panel1.Controls.Add(this.dtpBeg);
+            this.panel1.Controls.Add(this.cmbApparelType);
+            this.panel1.Controls.Add(this.label25);
+            this.panel1.Controls.Add(this.cmbApparel);
+            this.panel1.Controls.Add(this.label24);
+            this.panel1.Controls.Add(this.cmbAdType);
+            this.panel1.Controls.Add(this.label23);
+            this.panel1.Controls.Add(this.cmbSize);
+            this.panel1.Controls.Add(this.label22);
             this.panel1.Controls.Add(this.tbImgName);
             this.panel1.Controls.Add(this.btAddImage);
             this.panel1.Controls.Add(this.tbID);
@@ -111,8 +129,6 @@
             this.panel1.Controls.Add(this.label14);
             this.panel1.Controls.Add(this.cmbGoodsType);
             this.panel1.Controls.Add(this.cmbADStatus);
-            this.panel1.Controls.Add(this.tbDateEnd);
-            this.panel1.Controls.Add(this.tbDateBeg);
             this.panel1.Controls.Add(this.tbVideoURL);
             this.panel1.Controls.Add(this.label13);
             this.panel1.Controls.Add(this.label12);
@@ -136,15 +152,134 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(228, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(590, 565);
+            this.panel1.Size = new System.Drawing.Size(960, 565);
             this.panel1.TabIndex = 1;
+            // 
+            // dtpEnd
+            // 
+            this.dtpEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpEnd.Location = new System.Drawing.Point(106, 153);
+            this.dtpEnd.Name = "dtpEnd";
+            this.dtpEnd.Size = new System.Drawing.Size(200, 20);
+            this.dtpEnd.TabIndex = 53;
+            // 
+            // dtpBeg
+            // 
+            this.dtpBeg.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpBeg.Location = new System.Drawing.Point(106, 126);
+            this.dtpBeg.Name = "dtpBeg";
+            this.dtpBeg.Size = new System.Drawing.Size(200, 20);
+            this.dtpBeg.TabIndex = 52;
+            // 
+            // cmbApparelType
+            // 
+            this.cmbApparelType.AutoCompleteCustomSource.AddRange(new string[] {
+            "12мб"});
+            this.cmbApparelType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbApparelType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbApparelType.FormattingEnabled = true;
+            this.cmbApparelType.Items.AddRange(new object[] {
+            "--Память--"});
+            this.cmbApparelType.Location = new System.Drawing.Point(366, 71);
+            this.cmbApparelType.Name = "cmbApparelType";
+            this.cmbApparelType.Size = new System.Drawing.Size(121, 21);
+            this.cmbApparelType.TabIndex = 51;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(233, 78);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(113, 13);
+            this.label25.TabIndex = 50;
+            this.label25.Text = "Тип верхней одежды";
+            // 
+            // cmbApparel
+            // 
+            this.cmbApparel.AutoCompleteCustomSource.AddRange(new string[] {
+            "12мб"});
+            this.cmbApparel.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbApparel.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbApparel.FormattingEnabled = true;
+            this.cmbApparel.Items.AddRange(new object[] {
+            "--Память--"});
+            this.cmbApparel.Location = new System.Drawing.Point(366, 46);
+            this.cmbApparel.Name = "cmbApparel";
+            this.cmbApparel.Size = new System.Drawing.Size(121, 21);
+            this.cmbApparel.TabIndex = 49;
+            this.cmbApparel.SelectedIndexChanged += new System.EventHandler(this.cmbApparel_SelectedIndexChanged);
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(233, 54);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(69, 13);
+            this.label24.TabIndex = 48;
+            this.label24.Text = "Тип одежды";
+            // 
+            // cmbAdType
+            // 
+            this.cmbAdType.AutoCompleteCustomSource.AddRange(new string[] {
+            "12мб"});
+            this.cmbAdType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbAdType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbAdType.FormattingEnabled = true;
+            this.cmbAdType.Items.AddRange(new object[] {
+            "Товар приобретен на продажу",
+            "Товар от производителя"});
+            this.cmbAdType.Location = new System.Drawing.Point(366, 19);
+            this.cmbAdType.Name = "cmbAdType";
+            this.cmbAdType.Size = new System.Drawing.Size(121, 21);
+            this.cmbAdType.TabIndex = 47;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(233, 24);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(90, 13);
+            this.label23.TabIndex = 46;
+            this.label23.Text = "Вид объявления";
+            // 
+            // cmbSize
+            // 
+            this.cmbSize.AutoCompleteCustomSource.AddRange(new string[] {
+            "12мб"});
+            this.cmbSize.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbSize.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cmbSize.FormattingEnabled = true;
+            this.cmbSize.Items.AddRange(new object[] {
+            "--Память--"});
+            this.cmbSize.Location = new System.Drawing.Point(366, 98);
+            this.cmbSize.Name = "cmbSize";
+            this.cmbSize.Size = new System.Drawing.Size(121, 21);
+            this.cmbSize.TabIndex = 45;
+            this.cmbSize.MouseEnter += new System.EventHandler(this.cmbSize_MouseEnter);
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(233, 101);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(46, 13);
+            this.label22.TabIndex = 44;
+            this.label22.Text = "Размер";
+            // 
+            // tbImgName
+            // 
+            this.tbImgName.Location = new System.Drawing.Point(171, 410);
+            this.tbImgName.Multiline = true;
+            this.tbImgName.Name = "tbImgName";
+            this.tbImgName.Size = new System.Drawing.Size(399, 57);
+            this.tbImgName.TabIndex = 43;
             // 
             // btAddImage
             // 
             this.btAddImage.Location = new System.Drawing.Point(90, 426);
             this.btAddImage.Name = "btAddImage";
             this.btAddImage.Size = new System.Drawing.Size(75, 23);
-            this.btAddImage.TabIndex = 42;
+            this.btAddImage.TabIndex = 13;
             this.btAddImage.Text = "Добавить";
             this.btAddImage.UseVisualStyleBackColor = true;
             this.btAddImage.Click += new System.EventHandler(this.btAddImage_Click);
@@ -154,7 +289,7 @@
             this.tbID.Location = new System.Drawing.Point(106, 17);
             this.tbID.Name = "tbID";
             this.tbID.Size = new System.Drawing.Size(121, 20);
-            this.tbID.TabIndex = 41;
+            this.tbID.TabIndex = 1;
             // 
             // label21
             // 
@@ -172,9 +307,7 @@
             this.cmbROM.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cmbROM.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbROM.FormattingEnabled = true;
-            this.cmbROM.Items.AddRange(new object[] {
-            "--Память--"});
-            this.cmbROM.Location = new System.Drawing.Point(363, 151);
+            this.cmbROM.Location = new System.Drawing.Point(605, 121);
             this.cmbROM.Name = "cmbROM";
             this.cmbROM.Size = new System.Drawing.Size(121, 21);
             this.cmbROM.TabIndex = 39;
@@ -186,9 +319,7 @@
             this.cmbRAM.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cmbRAM.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbRAM.FormattingEnabled = true;
-            this.cmbRAM.Items.AddRange(new object[] {
-            "--Память--"});
-            this.cmbRAM.Location = new System.Drawing.Point(363, 125);
+            this.cmbRAM.Location = new System.Drawing.Point(605, 95);
             this.cmbRAM.Name = "cmbRAM";
             this.cmbRAM.Size = new System.Drawing.Size(121, 21);
             this.cmbRAM.TabIndex = 38;
@@ -200,9 +331,7 @@
             this.cmbColor.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cmbColor.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbColor.FormattingEnabled = true;
-            this.cmbColor.Items.AddRange(new object[] {
-            "--Цвета--"});
-            this.cmbColor.Location = new System.Drawing.Point(363, 98);
+            this.cmbColor.Location = new System.Drawing.Point(605, 68);
             this.cmbColor.Name = "cmbColor";
             this.cmbColor.Size = new System.Drawing.Size(121, 21);
             this.cmbColor.TabIndex = 37;
@@ -214,9 +343,7 @@
             this.cmbModel.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cmbModel.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbModel.FormattingEnabled = true;
-            this.cmbModel.Items.AddRange(new object[] {
-            "--Модель--"});
-            this.cmbModel.Location = new System.Drawing.Point(363, 71);
+            this.cmbModel.Location = new System.Drawing.Point(605, 41);
             this.cmbModel.Name = "cmbModel";
             this.cmbModel.Size = new System.Drawing.Size(121, 21);
             this.cmbModel.TabIndex = 36;
@@ -228,9 +355,7 @@
             this.cmbVendor.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cmbVendor.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbVendor.FormattingEnabled = true;
-            this.cmbVendor.Items.AddRange(new object[] {
-            "--Бренд--"});
-            this.cmbVendor.Location = new System.Drawing.Point(363, 44);
+            this.cmbVendor.Location = new System.Drawing.Point(605, 14);
             this.cmbVendor.Name = "cmbVendor";
             this.cmbVendor.Size = new System.Drawing.Size(121, 21);
             this.cmbVendor.TabIndex = 35;
@@ -238,7 +363,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(276, 157);
+            this.label20.Location = new System.Drawing.Point(518, 127);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(67, 13);
             this.label20.TabIndex = 34;
@@ -247,7 +372,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(276, 154);
+            this.label19.Location = new System.Drawing.Point(518, 124);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(0, 13);
             this.label19.TabIndex = 33;
@@ -255,7 +380,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(276, 132);
+            this.label18.Location = new System.Drawing.Point(518, 102);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(74, 13);
             this.label18.TabIndex = 32;
@@ -264,7 +389,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(276, 106);
+            this.label17.Location = new System.Drawing.Point(518, 76);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(32, 13);
             this.label17.TabIndex = 31;
@@ -273,7 +398,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(276, 79);
+            this.label16.Location = new System.Drawing.Point(518, 49);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(46, 13);
             this.label16.TabIndex = 30;
@@ -282,7 +407,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(276, 52);
+            this.label15.Location = new System.Drawing.Point(518, 22);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(38, 13);
             this.label15.TabIndex = 29;
@@ -309,7 +434,8 @@
             this.cmbGoodsType.Location = new System.Drawing.Point(106, 70);
             this.cmbGoodsType.Name = "cmbGoodsType";
             this.cmbGoodsType.Size = new System.Drawing.Size(121, 21);
-            this.cmbGoodsType.TabIndex = 26;
+            this.cmbGoodsType.TabIndex = 3;
+            this.cmbGoodsType.SelectedIndexChanged += new System.EventHandler(this.cmbGoodsType_SelectedIndexChanged);
             // 
             // cmbADStatus
             // 
@@ -329,28 +455,14 @@
             this.cmbADStatus.Location = new System.Drawing.Point(106, 176);
             this.cmbADStatus.Name = "cmbADStatus";
             this.cmbADStatus.Size = new System.Drawing.Size(121, 21);
-            this.cmbADStatus.TabIndex = 25;
-            // 
-            // tbDateEnd
-            // 
-            this.tbDateEnd.Location = new System.Drawing.Point(106, 150);
-            this.tbDateEnd.Name = "tbDateEnd";
-            this.tbDateEnd.Size = new System.Drawing.Size(121, 20);
-            this.tbDateEnd.TabIndex = 24;
-            // 
-            // tbDateBeg
-            // 
-            this.tbDateBeg.Location = new System.Drawing.Point(106, 124);
-            this.tbDateBeg.Name = "tbDateBeg";
-            this.tbDateBeg.Size = new System.Drawing.Size(121, 20);
-            this.tbDateBeg.TabIndex = 23;
+            this.cmbADStatus.TabIndex = 7;
             // 
             // tbVideoURL
             // 
             this.tbVideoURL.Location = new System.Drawing.Point(90, 512);
             this.tbVideoURL.Name = "tbVideoURL";
             this.tbVideoURL.Size = new System.Drawing.Size(470, 20);
-            this.tbVideoURL.TabIndex = 22;
+            this.tbVideoURL.TabIndex = 14;
             // 
             // label13
             // 
@@ -375,7 +487,7 @@
             this.tbAdress.Location = new System.Drawing.Point(106, 230);
             this.tbAdress.Name = "tbAdress";
             this.tbAdress.Size = new System.Drawing.Size(464, 20);
-            this.tbAdress.TabIndex = 19;
+            this.tbAdress.TabIndex = 9;
             // 
             // label11
             // 
@@ -401,7 +513,7 @@
             this.cmbContactMethod.Location = new System.Drawing.Point(106, 203);
             this.cmbContactMethod.Name = "cmbContactMethod";
             this.cmbContactMethod.Size = new System.Drawing.Size(121, 21);
-            this.cmbContactMethod.TabIndex = 17;
+            this.cmbContactMethod.TabIndex = 8;
             // 
             // label10
             // 
@@ -462,7 +574,7 @@
             this.cmbCondition.Location = new System.Drawing.Point(106, 97);
             this.cmbCondition.Name = "cmbCondition";
             this.cmbCondition.Size = new System.Drawing.Size(121, 21);
-            this.cmbCondition.TabIndex = 11;
+            this.cmbCondition.TabIndex = 4;
             // 
             // cmbCategory
             // 
@@ -481,11 +593,13 @@
             "Оргтехника и расходники",
             "Планшеты и электронные книги",
             "Ноутбуки",
-            "Настольные компьютеры"});
+            "Настольные компьютеры",
+            "Одежда, обувь, аксессуары",
+            "Часы и украшения"});
             this.cmbCategory.Location = new System.Drawing.Point(106, 43);
             this.cmbCategory.Name = "cmbCategory";
             this.cmbCategory.Size = new System.Drawing.Size(121, 21);
-            this.cmbCategory.TabIndex = 10;
+            this.cmbCategory.TabIndex = 2;
             this.cmbCategory.SelectedIndexChanged += new System.EventHandler(this.cmbCategory_SelectedIndexChanged);
             // 
             // tbPrice
@@ -493,7 +607,7 @@
             this.tbPrice.Location = new System.Drawing.Point(106, 345);
             this.tbPrice.Name = "tbPrice";
             this.tbPrice.Size = new System.Drawing.Size(121, 20);
-            this.tbPrice.TabIndex = 9;
+            this.tbPrice.TabIndex = 12;
             // 
             // tbDescription
             // 
@@ -501,14 +615,14 @@
             this.tbDescription.Multiline = true;
             this.tbDescription.Name = "tbDescription";
             this.tbDescription.Size = new System.Drawing.Size(464, 57);
-            this.tbDescription.TabIndex = 8;
+            this.tbDescription.TabIndex = 11;
             // 
             // tbTitle
             // 
             this.tbTitle.Location = new System.Drawing.Point(106, 256);
             this.tbTitle.Name = "tbTitle";
             this.tbTitle.Size = new System.Drawing.Size(464, 20);
-            this.tbTitle.TabIndex = 7;
+            this.tbTitle.TabIndex = 10;
             // 
             // label5
             // 
@@ -561,7 +675,7 @@
             this.btCreate.Location = new System.Drawing.Point(634, 597);
             this.btCreate.Name = "btCreate";
             this.btCreate.Size = new System.Drawing.Size(154, 55);
-            this.btCreate.TabIndex = 2;
+            this.btCreate.TabIndex = 15;
             this.btCreate.Text = "Сохранить";
             this.btCreate.UseVisualStyleBackColor = true;
             this.btCreate.Click += new System.EventHandler(this.btCreate_Click);
@@ -572,7 +686,7 @@
             this.btDeserialize.Location = new System.Drawing.Point(13, 583);
             this.btDeserialize.Name = "btDeserialize";
             this.btDeserialize.Size = new System.Drawing.Size(209, 27);
-            this.btDeserialize.TabIndex = 3;
+            this.btDeserialize.TabIndex = 17;
             this.btDeserialize.Text = "Загрузить список";
             this.btDeserialize.UseVisualStyleBackColor = true;
             this.btDeserialize.Click += new System.EventHandler(this.btDeserialize_Click);
@@ -582,7 +696,7 @@
             this.btSerialize.Location = new System.Drawing.Point(13, 616);
             this.btSerialize.Name = "btSerialize";
             this.btSerialize.Size = new System.Drawing.Size(209, 36);
-            this.btSerialize.TabIndex = 4;
+            this.btSerialize.TabIndex = 16;
             this.btSerialize.Text = "Загрузить файл";
             this.btSerialize.UseVisualStyleBackColor = true;
             this.btSerialize.Click += new System.EventHandler(this.btSerialize_Click);
@@ -592,19 +706,11 @@
             this.ofdImages.FileName = "openFileDialog1";
             this.ofdImages.Multiselect = true;
             // 
-            // tbImgName
-            // 
-            this.tbImgName.Location = new System.Drawing.Point(171, 410);
-            this.tbImgName.Multiline = true;
-            this.tbImgName.Name = "tbImgName";
-            this.tbImgName.Size = new System.Drawing.Size(399, 57);
-            this.tbImgName.TabIndex = 43;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(819, 664);
+            this.ClientSize = new System.Drawing.Size(1200, 664);
             this.Controls.Add(this.btSerialize);
             this.Controls.Add(this.btDeserialize);
             this.Controls.Add(this.btCreate);
@@ -625,8 +731,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.ComboBox cmbGoodsType;
         private System.Windows.Forms.ComboBox cmbADStatus;
-        private System.Windows.Forms.TextBox tbDateEnd;
-        private System.Windows.Forms.TextBox tbDateBeg;
         private System.Windows.Forms.TextBox tbVideoURL;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
@@ -667,6 +771,16 @@
         private System.Windows.Forms.OpenFileDialog ofdImages;
         private System.Windows.Forms.Button btAddImage;
         private System.Windows.Forms.TextBox tbImgName;
+        private System.Windows.Forms.ComboBox cmbApparel;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.ComboBox cmbAdType;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.ComboBox cmbSize;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.ComboBox cmbApparelType;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.DateTimePicker dtpEnd;
+        private System.Windows.Forms.DateTimePicker dtpBeg;
     }
 }
 
