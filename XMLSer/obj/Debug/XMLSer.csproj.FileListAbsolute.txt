@@ -1,7 +1,6 @@
 C:\Users\Dmitriy\source\repos\XMLSer\XMLSer\bin\Debug\XMLSer.exe.config
 C:\Users\Dmitriy\source\repos\XMLSer\XMLSer\bin\Debug\XMLSer.exe
 C:\Users\Dmitriy\source\repos\XMLSer\XMLSer\bin\Debug\XMLSer.pdb
-C:\Users\Dmitriy\source\repos\XMLSer\XMLSer\obj\Debug\XMLSer.csproj.AssemblyReference.cache
 C:\Users\Dmitriy\source\repos\XMLSer\XMLSer\obj\Debug\XMLSer.csproj.SuggestedBindingRedirects.cache
 C:\Users\Dmitriy\source\repos\XMLSer\XMLSer\obj\Debug\XMLSer.Form1.resources
 C:\Users\Dmitriy\source\repos\XMLSer\XMLSer\obj\Debug\XMLSer.Properties.Resources.resources
@@ -9,3 +8,7 @@ C:\Users\Dmitriy\source\repos\XMLSer\XMLSer\obj\Debug\XMLSer.csproj.GenerateReso
 C:\Users\Dmitriy\source\repos\XMLSer\XMLSer\obj\Debug\XMLSer.csproj.CoreCompileInputs.cache
 C:\Users\Dmitriy\source\repos\XMLSer\XMLSer\obj\Debug\XMLSer.exe
 C:\Users\Dmitriy\source\repos\XMLSer\XMLSer\obj\Debug\XMLSer.pdb
+C:\Users\Dmitriy\source\repos\XMLSer\XMLSer\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Dmitriy\source\repos\XMLSer\XMLSer\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Dmitriy\source\repos\XMLSer\XMLSer\obj\Debug\XMLSer.csproj.CopyComplete
+C:\Users\Dmitriy\source\repos\XMLSer\XMLSer\obj\Debug\XMLSer.csproj.AssemblyReference.cache

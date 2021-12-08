@@ -1,16 +1,20 @@
 ﻿using System;
 using System.IO;
+using System.Text;
 using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Xml.Serialization;
-using System.Text.RegularExpressions;
+using System.Net.Http;
+using System.Net;
+using System.Collections.Specialized;
+using Newtonsoft.Json;
 
 namespace XMLSer
 {
     public partial class Form1 : Form
     {
         List<string> images = new List<string>();
-        OpenFileDialog openFileDialog = new OpenFileDialog();
+        OpenFileDialog _fileDialog = new OpenFileDialog();
         Ad ad = new Ad();
         Dictonary dictonary = new Dictonary();
         public Form1()
@@ -29,7 +33,7 @@ namespace XMLSer
             tbDescription.Clear();
             tbPrice.Clear();
             tbVideoURL.Clear();
-            openFileDialog.Reset();
+            _fileDialog.Reset();
             cmbCategory.ResetText();
             cmbADStatus.ResetText();
             cmbColor.ResetText();
@@ -40,7 +44,6 @@ namespace XMLSer
             cmbRAM.ResetText();
             cmbROM.ResetText();
             cmbVendor.ResetText();
-            tbImgName.Clear();
             cmbAdType.ResetText();
             cmbApparel.ResetText();
             cmbApparelType.ResetText();
@@ -98,6 +101,7 @@ namespace XMLSer
                     ad.Address = tbAdress.Text;
                     ad.VideoUrl = tbVideoURL.Text;
                     ad.Vendor = cmbVendor.Text;
+                    ad.Images = images; 
                     ad.Model = cmbModel.Text;
                     ad.Color = cmbColor.Text;
                     ad.RamSize = cmbRAM.Text;
@@ -151,7 +155,7 @@ namespace XMLSer
                     cmbROM.Text = ad.MemorySize;
                     foreach (var x in ad.Images)
                     {
-                        tbImgName.Text += x;
+                       
                     }
                     cmbAdType.Text = ad.AdType;
                     cmbApparel.Text = ad.Apparel;
@@ -207,28 +211,15 @@ namespace XMLSer
             }
         }
 
-        private void btAddImage_Click(object sender, EventArgs e)
-        {
-            //Кнопка которая позволяет добавить картинки
-            openFileDialog.Multiselect = true;
-            if (openFileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-
-                foreach (var x in openFileDialog.FileNames)
-                {
-                    tbImgName.Text += openFileDialog.FileName;
-                    string image = "url=" + '\u0022' + x + '\u0022';
-                    images.Add(image);
-                    
-                }
-
-            }
-        }
-
         //Далее события которые активирует определённый справочник при определённом выборе
         private void cmbCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
             cmbGoodsType.Items.Clear();
+            cmbVendor.Enabled = false;
+            cmbModel.Enabled = false;
+            cmbColor.Enabled = false;
+            cmbRAM.Enabled = false;
+            cmbROM.Enabled = false;
             if (cmbCategory.Text == "Телефоны")
             {
                 cmbGoodsType.Items.AddRange(dictonary.phonesGoods);
@@ -238,7 +229,16 @@ namespace XMLSer
                 cmbRAM.Enabled = true;
                 cmbROM.Enabled = true;
             }
-            else if (cmbCategory.Text == "Аудио и видео")
+            else
+            {
+                cmbGoodsType.Items.Add("");
+                cmbVendor.Enabled = false;
+                cmbModel.Enabled = false;
+                cmbColor.Enabled = false;
+                cmbRAM.Enabled = false;
+                cmbROM.Enabled = false;
+            }
+            if (cmbCategory.Text == "Аудио и видео")
             {
                 cmbGoodsType.Items.AddRange(dictonary.audVidNames);
             }
@@ -270,15 +270,7 @@ namespace XMLSer
             {
                 cmbGoodsType.Items.AddRange(dictonary.clockFineryNames);
             }
-            else
-            {
-                cmbGoodsType.Items.Add("");
-                cmbVendor.Enabled = false;
-                cmbModel.Enabled = false;
-                cmbColor.Enabled = false;
-                cmbRAM.Enabled = false;
-                cmbROM.Enabled = false;
-            }
+            
 
         }
 
@@ -295,6 +287,7 @@ namespace XMLSer
             }
             else if (cmbGoodsType.Text == "Аксессуары")
             {
+
                 cmbApparel.Items.AddRange(dictonary.accesApparelNames);
             }
             else
@@ -337,6 +330,117 @@ namespace XMLSer
             {
                 cmbSize.Items.Add("");
             }
+        }
+
+        private void panelDnD_MouseClick(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                
+                _fileDialog.Multiselect = true;
+                _fileDialog.Filter = "Image Files (*.bmp,*.png,*.jpg,*.jpeg)|*.bmp;*.png;*.jpg;*.jpeg";
+                if (_fileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    foreach (var x in _fileDialog.FileNames)
+                    {
+                        byte[] imageArray = File.ReadAllBytes(x);
+                        string base64ImageRepresentation = Convert.ToBase64String(imageArray);
+                        using (WebClient client = new WebClient())
+                        {
+                            //задаем параметры для коллекции
+                            NameValueCollection param = new NameValueCollection();
+                            param.Add("key", "50d7cec1c380ecf610b6475acb9a148f");
+                            //удалится через 3 дня
+                            param.Add("expiration", "259200");
+                            param.Add("image", base64ImageRepresentation);
+                            //делаем запрос методом POST и получем массив байтов
+                            var response = client.UploadValues("https://api.imgbb.com/1/upload", "POST", param);
+                            //декодируем
+                            var jsonResponse = Encoding.Default.GetString(response);
+                            //десериализуем
+                            JsonDeser UploadedImageData = JsonConvert.DeserializeObject<JsonDeser>(jsonResponse);
+                            //скопируем URL в буфер обмена
+                            Clipboard.SetData(DataFormats.Text, (Object)UploadedImageData.data.image.url);
+                            images.Add("url=" + '\u0022' + UploadedImageData.data.image.url + '\u0022');
+                            
+                        }
+
+                    }
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void panelDnD_DragDrop(object sender, DragEventArgs e)
+        {
+            try
+            {
+                List<string> filepaths = new List<string>();
+                foreach (var obj in (string[])e.Data.GetData(DataFormats.FileDrop))
+                {
+                    if (Directory.Exists(obj))
+                    {
+                        filepaths.AddRange(Directory.GetFiles(obj, "*.*", SearchOption.AllDirectories));
+                    }
+                    else
+                    {
+                        filepaths.Add(obj);
+                    }
+
+                }
+                foreach (var fileInList in filepaths)
+                {
+                    //массив байтов файла
+                    byte[] imageArray = File.ReadAllBytes(fileInList);
+                    //конвертируем в base64
+                    string base64ImageRepresentation = Convert.ToBase64String(imageArray);
+                    using (WebClient client = new WebClient())
+                    {
+                        //задаем параметры для коллекции
+                        NameValueCollection param = new NameValueCollection();
+                        param.Add("key", "50d7cec1c380ecf610b6475acb9a148f");
+                        //удалится через 3 дня
+                        param.Add("expiration", "259200");
+                        param.Add("image", base64ImageRepresentation);
+                        //делаем запрос методом POST и получем массив байтов
+                        var response = client.UploadValues("https://api.imgbb.com/1/upload", "POST", param);
+                        //декодируем
+                        var jsonResponse = Encoding.Default.GetString(response);
+                        //десериализуем
+                        JsonDeser UploadedImageData = JsonConvert.DeserializeObject<JsonDeser>(jsonResponse);
+                        //скопируем URL в буфер обмена
+                        Clipboard.SetData(DataFormats.Text, (Object)UploadedImageData.data.image.url);
+                        images.Add("url=" + '\u0022' + UploadedImageData.data.image.url + '\u0022');
+                        //MessageBox.Show(UploadedImageData.data.image.url);
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+        
+        }
+
+        private void panelDnD_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop, false))
+            {
+                label26.Text = "Бросай!";
+                e.Effect = DragDropEffects.Copy;
+            }
+        }
+
+        private void panelDnD_DragLeave(object sender, EventArgs e)
+        {
+            label26.Text = "Перетащи сюда файлы!";
         }
     }
 }

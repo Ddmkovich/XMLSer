@@ -30,6 +30,8 @@
         {
             this.ADsList = new System.Windows.Forms.ListView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panelDnD = new System.Windows.Forms.Panel();
+            this.label26 = new System.Windows.Forms.Label();
             this.dtpEnd = new System.Windows.Forms.DateTimePicker();
             this.dtpBeg = new System.Windows.Forms.DateTimePicker();
             this.cmbApparelType = new System.Windows.Forms.ComboBox();
@@ -40,8 +42,6 @@
             this.label23 = new System.Windows.Forms.Label();
             this.cmbSize = new System.Windows.Forms.ComboBox();
             this.label22 = new System.Windows.Forms.Label();
-            this.tbImgName = new System.Windows.Forms.TextBox();
-            this.btAddImage = new System.Windows.Forms.Button();
             this.tbID = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.cmbROM = new System.Windows.Forms.ComboBox();
@@ -84,6 +84,7 @@
             this.btSerialize = new System.Windows.Forms.Button();
             this.ofdImages = new System.Windows.Forms.OpenFileDialog();
             this.panel1.SuspendLayout();
+            this.panelDnD.SuspendLayout();
             this.SuspendLayout();
             // 
             // ADsList
@@ -101,6 +102,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.panelDnD);
             this.panel1.Controls.Add(this.dtpEnd);
             this.panel1.Controls.Add(this.dtpBeg);
             this.panel1.Controls.Add(this.cmbApparelType);
@@ -111,8 +113,6 @@
             this.panel1.Controls.Add(this.label23);
             this.panel1.Controls.Add(this.cmbSize);
             this.panel1.Controls.Add(this.label22);
-            this.panel1.Controls.Add(this.tbImgName);
-            this.panel1.Controls.Add(this.btAddImage);
             this.panel1.Controls.Add(this.tbID);
             this.panel1.Controls.Add(this.label21);
             this.panel1.Controls.Add(this.cmbROM);
@@ -154,6 +154,31 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(960, 565);
             this.panel1.TabIndex = 1;
+            // 
+            // panelDnD
+            // 
+            this.panelDnD.AllowDrop = true;
+            this.panelDnD.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.panelDnD.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panelDnD.Controls.Add(this.label26);
+            this.panelDnD.Cursor = System.Windows.Forms.Cursors.Default;
+            this.panelDnD.Location = new System.Drawing.Point(106, 371);
+            this.panelDnD.Name = "panelDnD";
+            this.panelDnD.Size = new System.Drawing.Size(584, 113);
+            this.panelDnD.TabIndex = 54;
+            this.panelDnD.DragDrop += new System.Windows.Forms.DragEventHandler(this.panelDnD_DragDrop);
+            this.panelDnD.DragEnter += new System.Windows.Forms.DragEventHandler(this.panelDnD_DragEnter);
+            this.panelDnD.DragLeave += new System.EventHandler(this.panelDnD_DragLeave);
+            this.panelDnD.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panelDnD_MouseClick);
+            // 
+            // label26
+            // 
+            this.label26.Location = new System.Drawing.Point(110, 17);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(374, 70);
+            this.label26.TabIndex = 11;
+            this.label26.Text = "Перетащи сюда файлы\r\n";
+            this.label26.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // dtpEnd
             // 
@@ -265,24 +290,6 @@
             this.label22.Size = new System.Drawing.Size(46, 13);
             this.label22.TabIndex = 44;
             this.label22.Text = "Размер";
-            // 
-            // tbImgName
-            // 
-            this.tbImgName.Location = new System.Drawing.Point(171, 410);
-            this.tbImgName.Multiline = true;
-            this.tbImgName.Name = "tbImgName";
-            this.tbImgName.Size = new System.Drawing.Size(399, 57);
-            this.tbImgName.TabIndex = 43;
-            // 
-            // btAddImage
-            // 
-            this.btAddImage.Location = new System.Drawing.Point(90, 426);
-            this.btAddImage.Name = "btAddImage";
-            this.btAddImage.Size = new System.Drawing.Size(75, 23);
-            this.btAddImage.TabIndex = 13;
-            this.btAddImage.Text = "Добавить";
-            this.btAddImage.UseVisualStyleBackColor = true;
-            this.btAddImage.Click += new System.EventHandler(this.btAddImage_Click);
             // 
             // tbID
             // 
@@ -720,6 +727,7 @@
             this.Text = "Категория";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.panelDnD.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -769,8 +777,6 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Button btSerialize;
         private System.Windows.Forms.OpenFileDialog ofdImages;
-        private System.Windows.Forms.Button btAddImage;
-        private System.Windows.Forms.TextBox tbImgName;
         private System.Windows.Forms.ComboBox cmbApparel;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.ComboBox cmbAdType;
@@ -781,6 +787,8 @@
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.DateTimePicker dtpEnd;
         private System.Windows.Forms.DateTimePicker dtpBeg;
+        private System.Windows.Forms.Panel panelDnD;
+        private System.Windows.Forms.Label label26;
     }
 }
 
