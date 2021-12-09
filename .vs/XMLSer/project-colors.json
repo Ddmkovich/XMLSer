@@ -10,7 +10,12 @@
       "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
       "DisplayName": "Прочие файлы",
       "ColorIndex": -1
+    },
+    "bf6c8050-3f9c-4103-aa9a-5bedc439d9d6": {
+      "ProjectGuid": "bf6c8050-3f9c-4103-aa9a-5bedc439d9d6",
+      "DisplayName": "UnitTests",
+      "ColorIndex": 1
     }
   },
-  "NextColorIndex": 1
+  "NextColorIndex": 2
 }

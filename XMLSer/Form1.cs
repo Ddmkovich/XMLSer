@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Net;
 using System.Collections.Specialized;
 using Newtonsoft.Json;
+using XMLSer.modules;
 
 namespace XMLSer
 {
@@ -332,39 +333,18 @@ namespace XMLSer
             }
         }
 
-        private void panelDnD_MouseClick(object sender, MouseEventArgs e)
+        public void panelDnD_MouseClick(object sender, MouseEventArgs e)
         {
             try
             {
-                
                 _fileDialog.Multiselect = true;
                 _fileDialog.Filter = "Image Files (*.bmp,*.png,*.jpg,*.jpeg)|*.bmp;*.png;*.jpg;*.jpeg";
                 if (_fileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     foreach (var x in _fileDialog.FileNames)
                     {
-                        byte[] imageArray = File.ReadAllBytes(x);
-                        string base64ImageRepresentation = Convert.ToBase64String(imageArray);
-                        using (WebClient client = new WebClient())
-                        {
-                            //задаем параметры для коллекции
-                            NameValueCollection param = new NameValueCollection();
-                            param.Add("key", "50d7cec1c380ecf610b6475acb9a148f");
-                            //удалится через 3 дня
-                            param.Add("expiration", "259200");
-                            param.Add("image", base64ImageRepresentation);
-                            //делаем запрос методом POST и получем массив байтов
-                            var response = client.UploadValues("https://api.imgbb.com/1/upload", "POST", param);
-                            //декодируем
-                            var jsonResponse = Encoding.Default.GetString(response);
-                            //десериализуем
-                            JsonDeser UploadedImageData = JsonConvert.DeserializeObject<JsonDeser>(jsonResponse);
-                            //скопируем URL в буфер обмена
-                            Clipboard.SetData(DataFormats.Text, (Object)UploadedImageData.data.image.url);
-                            images.Add("url=" + '\u0022' + UploadedImageData.data.image.url + '\u0022');
-                            
-                        }
-
+                        string imageURl = uploadImageModule.Upload2imgbb(x);
+                        images.Add(imageURl);
                     }
 
                 }
