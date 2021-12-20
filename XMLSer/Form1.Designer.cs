@@ -34,14 +34,8 @@
             this.label26 = new System.Windows.Forms.Label();
             this.dtpEnd = new System.Windows.Forms.DateTimePicker();
             this.dtpBeg = new System.Windows.Forms.DateTimePicker();
-            this.cmbApparelType = new System.Windows.Forms.ComboBox();
-            this.label25 = new System.Windows.Forms.Label();
-            this.cmbApparel = new System.Windows.Forms.ComboBox();
-            this.label24 = new System.Windows.Forms.Label();
             this.cmbAdType = new System.Windows.Forms.ComboBox();
             this.label23 = new System.Windows.Forms.Label();
-            this.cmbSize = new System.Windows.Forms.ComboBox();
-            this.label22 = new System.Windows.Forms.Label();
             this.tbID = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.cmbROM = new System.Windows.Forms.ComboBox();
@@ -94,7 +88,9 @@
             this.ADsList.HideSelection = false;
             this.ADsList.LabelWrap = false;
             this.ADsList.Location = new System.Drawing.Point(13, 12);
+            this.ADsList.MultiSelect = false;
             this.ADsList.Name = "ADsList";
+            this.ADsList.ShowGroups = false;
             this.ADsList.Size = new System.Drawing.Size(209, 565);
             this.ADsList.TabIndex = 0;
             this.ADsList.UseCompatibleStateImageBehavior = false;
@@ -105,14 +101,8 @@
             this.panel1.Controls.Add(this.panelDnD);
             this.panel1.Controls.Add(this.dtpEnd);
             this.panel1.Controls.Add(this.dtpBeg);
-            this.panel1.Controls.Add(this.cmbApparelType);
-            this.panel1.Controls.Add(this.label25);
-            this.panel1.Controls.Add(this.cmbApparel);
-            this.panel1.Controls.Add(this.label24);
             this.panel1.Controls.Add(this.cmbAdType);
             this.panel1.Controls.Add(this.label23);
-            this.panel1.Controls.Add(this.cmbSize);
-            this.panel1.Controls.Add(this.label22);
             this.panel1.Controls.Add(this.tbID);
             this.panel1.Controls.Add(this.label21);
             this.panel1.Controls.Add(this.cmbROM);
@@ -152,7 +142,7 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(228, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(960, 565);
+            this.panel1.Size = new System.Drawing.Size(695, 565);
             this.panel1.TabIndex = 1;
             // 
             // panelDnD
@@ -173,9 +163,9 @@
             // 
             // label26
             // 
-            this.label26.Location = new System.Drawing.Point(110, 17);
+            this.label26.Location = new System.Drawing.Point(209, 52);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(374, 70);
+            this.label26.Size = new System.Drawing.Size(151, 24);
             this.label26.TabIndex = 11;
             this.label26.Text = "Перетащи сюда файлы\r\n";
             this.label26.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -196,53 +186,6 @@
             this.dtpBeg.Size = new System.Drawing.Size(200, 20);
             this.dtpBeg.TabIndex = 52;
             // 
-            // cmbApparelType
-            // 
-            this.cmbApparelType.AutoCompleteCustomSource.AddRange(new string[] {
-            "12мб"});
-            this.cmbApparelType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cmbApparelType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cmbApparelType.FormattingEnabled = true;
-            this.cmbApparelType.Items.AddRange(new object[] {
-            "--Память--"});
-            this.cmbApparelType.Location = new System.Drawing.Point(366, 71);
-            this.cmbApparelType.Name = "cmbApparelType";
-            this.cmbApparelType.Size = new System.Drawing.Size(121, 21);
-            this.cmbApparelType.TabIndex = 51;
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(233, 78);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(113, 13);
-            this.label25.TabIndex = 50;
-            this.label25.Text = "Тип верхней одежды";
-            // 
-            // cmbApparel
-            // 
-            this.cmbApparel.AutoCompleteCustomSource.AddRange(new string[] {
-            "12мб"});
-            this.cmbApparel.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cmbApparel.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cmbApparel.FormattingEnabled = true;
-            this.cmbApparel.Items.AddRange(new object[] {
-            "--Память--"});
-            this.cmbApparel.Location = new System.Drawing.Point(366, 46);
-            this.cmbApparel.Name = "cmbApparel";
-            this.cmbApparel.Size = new System.Drawing.Size(121, 21);
-            this.cmbApparel.TabIndex = 49;
-            this.cmbApparel.SelectedIndexChanged += new System.EventHandler(this.cmbApparel_SelectedIndexChanged);
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(233, 54);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(69, 13);
-            this.label24.TabIndex = 48;
-            this.label24.Text = "Тип одежды";
-            // 
             // cmbAdType
             // 
             this.cmbAdType.AutoCompleteCustomSource.AddRange(new string[] {
@@ -253,7 +196,7 @@
             this.cmbAdType.Items.AddRange(new object[] {
             "Товар приобретен на продажу",
             "Товар от производителя"});
-            this.cmbAdType.Location = new System.Drawing.Point(366, 19);
+            this.cmbAdType.Location = new System.Drawing.Point(233, 43);
             this.cmbAdType.Name = "cmbAdType";
             this.cmbAdType.Size = new System.Drawing.Size(121, 21);
             this.cmbAdType.TabIndex = 47;
@@ -261,35 +204,11 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(233, 24);
+            this.label23.Location = new System.Drawing.Point(233, 20);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(90, 13);
             this.label23.TabIndex = 46;
             this.label23.Text = "Вид объявления";
-            // 
-            // cmbSize
-            // 
-            this.cmbSize.AutoCompleteCustomSource.AddRange(new string[] {
-            "12мб"});
-            this.cmbSize.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cmbSize.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cmbSize.FormattingEnabled = true;
-            this.cmbSize.Items.AddRange(new object[] {
-            "--Память--"});
-            this.cmbSize.Location = new System.Drawing.Point(366, 98);
-            this.cmbSize.Name = "cmbSize";
-            this.cmbSize.Size = new System.Drawing.Size(121, 21);
-            this.cmbSize.TabIndex = 45;
-            this.cmbSize.MouseEnter += new System.EventHandler(this.cmbSize_MouseEnter);
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(233, 101);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(46, 13);
-            this.label22.TabIndex = 44;
-            this.label22.Text = "Размер";
             // 
             // tbID
             // 
@@ -314,7 +233,7 @@
             this.cmbROM.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cmbROM.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbROM.FormattingEnabled = true;
-            this.cmbROM.Location = new System.Drawing.Point(605, 121);
+            this.cmbROM.Location = new System.Drawing.Point(456, 124);
             this.cmbROM.Name = "cmbROM";
             this.cmbROM.Size = new System.Drawing.Size(121, 21);
             this.cmbROM.TabIndex = 39;
@@ -326,7 +245,7 @@
             this.cmbRAM.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cmbRAM.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbRAM.FormattingEnabled = true;
-            this.cmbRAM.Location = new System.Drawing.Point(605, 95);
+            this.cmbRAM.Location = new System.Drawing.Point(456, 98);
             this.cmbRAM.Name = "cmbRAM";
             this.cmbRAM.Size = new System.Drawing.Size(121, 21);
             this.cmbRAM.TabIndex = 38;
@@ -338,7 +257,7 @@
             this.cmbColor.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cmbColor.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbColor.FormattingEnabled = true;
-            this.cmbColor.Location = new System.Drawing.Point(605, 68);
+            this.cmbColor.Location = new System.Drawing.Point(456, 71);
             this.cmbColor.Name = "cmbColor";
             this.cmbColor.Size = new System.Drawing.Size(121, 21);
             this.cmbColor.TabIndex = 37;
@@ -350,7 +269,7 @@
             this.cmbModel.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cmbModel.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbModel.FormattingEnabled = true;
-            this.cmbModel.Location = new System.Drawing.Point(605, 41);
+            this.cmbModel.Location = new System.Drawing.Point(456, 44);
             this.cmbModel.Name = "cmbModel";
             this.cmbModel.Size = new System.Drawing.Size(121, 21);
             this.cmbModel.TabIndex = 36;
@@ -362,7 +281,7 @@
             this.cmbVendor.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cmbVendor.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbVendor.FormattingEnabled = true;
-            this.cmbVendor.Location = new System.Drawing.Point(605, 14);
+            this.cmbVendor.Location = new System.Drawing.Point(456, 17);
             this.cmbVendor.Name = "cmbVendor";
             this.cmbVendor.Size = new System.Drawing.Size(121, 21);
             this.cmbVendor.TabIndex = 35;
@@ -370,7 +289,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(518, 127);
+            this.label20.Location = new System.Drawing.Point(369, 130);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(67, 13);
             this.label20.TabIndex = 34;
@@ -379,7 +298,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(518, 124);
+            this.label19.Location = new System.Drawing.Point(369, 127);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(0, 13);
             this.label19.TabIndex = 33;
@@ -387,7 +306,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(518, 102);
+            this.label18.Location = new System.Drawing.Point(369, 105);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(74, 13);
             this.label18.TabIndex = 32;
@@ -396,7 +315,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(518, 76);
+            this.label17.Location = new System.Drawing.Point(369, 79);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(32, 13);
             this.label17.TabIndex = 31;
@@ -405,7 +324,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(518, 49);
+            this.label16.Location = new System.Drawing.Point(369, 52);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(46, 13);
             this.label16.TabIndex = 30;
@@ -414,7 +333,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(518, 22);
+            this.label15.Location = new System.Drawing.Point(369, 25);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(38, 13);
             this.label15.TabIndex = 29;
@@ -777,14 +696,8 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Button btSerialize;
         private System.Windows.Forms.OpenFileDialog ofdImages;
-        private System.Windows.Forms.ComboBox cmbApparel;
-        private System.Windows.Forms.Label label24;
         private System.Windows.Forms.ComboBox cmbAdType;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.ComboBox cmbSize;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.ComboBox cmbApparelType;
-        private System.Windows.Forms.Label label25;
         private System.Windows.Forms.DateTimePicker dtpEnd;
         private System.Windows.Forms.DateTimePicker dtpBeg;
         private System.Windows.Forms.Panel panelDnD;

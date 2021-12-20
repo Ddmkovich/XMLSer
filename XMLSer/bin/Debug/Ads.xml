@@ -2,22 +2,34 @@
 <Ads formatVersion="3" target="Avito.ru">
   <ADList>
     <Ad>
-      <Id>123</Id>
-      <Title>Абобок</Title>
-      <DateBegin>08.12.2021</DateBegin>
-      <DateEnd>30.12.2021</DateEnd>
-      <AdStatus>Free</AdStatus>
-      <Category>Телефоны</Category>
-      <GoodsType>Acer</GoodsType>
-      <Condition>Новое</Condition>
-      <Description>Описание</Description>
-      <ContactMethod>По телефону и в сообщениях</ContactMethod>
-      <Price>Цена</Price>
-      <Address>г. Абакан</Address>
-      <Images>
-        <Image>url="https://i.ibb.co/ZxLtXxC/7afdf3967d66.jpg"</Image>
-        <Image>url="https://i.ibb.co/Xb1jVF1/9ad905f0a772.jpg"</Image>
-      </Images>
+      <Id />
+      <Title />
+      <DateBegin>16.12.21 16:56:50</DateBegin>
+      <DateEnd>16.12.21 20:00:00</DateEnd>
+      <AdStatus />
+      <Category />
+      <GoodsType />
+      <Condition />
+      <Description />
+      <ContactMethod />
+      <Price />
+      <Address />
+      <Images />
+      <VideoUrl>url=""</VideoUrl>
+      <AdType />
+      <Apparel />
+      <ApparelType />
+      <Size />
+      <Vendor />
+      <Model />
+      <Color />
+      <MemorySize />
+      <RamSize />
+    </Ad>
+  </ADList>
+</Ads>/>
+      <Address />
+      <Images />
       <VideoUrl>url=""</VideoUrl>
       <AdType />
       <Apparel />

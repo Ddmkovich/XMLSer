@@ -21,6 +21,8 @@ namespace XMLSer
         {
             InitializeComponent();
             ClearInput();
+            dtpBeg.CustomFormat = "dd.MM.yy H:mm:ss";
+            dtpEnd.CustomFormat = "dd.MM.yy H:mm:ss";
         }
         private void ClearInput()
         { 
@@ -107,9 +109,6 @@ namespace XMLSer
                     ad.RamSize = cmbRAM.Text;
                     ad.MemorySize = cmbROM.Text;
                     ad.AdType = cmbAdType.Text;
-                    ad.Apparel = cmbApparel.Text;
-                    ad.ApparelType = cmbApparelType.Text;
-                    ad.Size = cmbSize.Text;
                 }
                
             }
@@ -119,7 +118,7 @@ namespace XMLSer
                 ad = new Ad(tbID.Text, tbTitle.Text, dtpBeg.Text, dtpEnd.Text, cmbADStatus.Text,
                cmbCategory.Text, cmbGoodsType.Text, cmbCondition.Text, tbDescription.Text, cmbContactMethod.Text,
                tbPrice.Text, tbAdress.Text, images, tbVideoURL.Text = "url=" + '\u0022' + tbVideoURL.Text + '\u0022', cmbVendor.Text, cmbModel.Text, cmbColor.Text,
-               cmbROM.Text, cmbRAM.Text , cmbAdType.Text,cmbApparel.Text,cmbApparelType.Text,cmbSize.Text);
+               cmbROM.Text, cmbRAM.Text , cmbAdType.Text);
                 Add(ad);
                 ClearInput();
             }
@@ -158,9 +157,6 @@ namespace XMLSer
                        
                     }
                     cmbAdType.Text = ad.AdType;
-                    cmbApparel.Text = ad.Apparel;
-                    cmbApparelType.Text = ad.ApparelType;
-                    cmbSize.Text = ad.Size;
                 }
 
             }
