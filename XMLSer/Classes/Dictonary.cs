@@ -159,6 +159,7 @@ namespace XMLSer
 "Часы",
 "Ювелирные изделия"
         };
+        public string[] toolNames = {"Инструменты","Садовая техника"};
         public string[] womenApparelNames =
            {"Брюки",
 "Верхняя одежда",

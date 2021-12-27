@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Net;
 using System.Collections.Specialized;
 using Newtonsoft.Json;
+using System.Data.SQLite;
 
 namespace XMLSer
 {
@@ -17,6 +18,7 @@ namespace XMLSer
         OpenFileDialog _fileDialog = new OpenFileDialog();
         Ad ad = new Ad();
         Dictonary dictonary = new Dictonary();
+        string cs = @"URI=file:Templates.db";
         public Form1()
         {
             InitializeComponent();
@@ -29,27 +31,11 @@ namespace XMLSer
             //Очищает поля для ввода
             images.Clear();
             tbID.Clear();
-            dtpBeg.ResetText();
-            dtpEnd.ResetText();
-            tbTitle.Clear();
-            tbDescription.Clear();
-            tbPrice.Clear();
-            tbVideoURL.Clear();
             _fileDialog.Reset();
-            cmbCategory.ResetText();
-            cmbADStatus.ResetText();
-            cmbColor.ResetText();
-            cmbCondition.ResetText();
-            cmbContactMethod.ResetText();
-            cmbGoodsType.ResetText();
             cmbModel.ResetText();
             cmbRAM.ResetText();
             cmbROM.ResetText();
             cmbVendor.ResetText();
-            cmbAdType.ResetText();
-            cmbApparel.ResetText();
-            cmbApparelType.ResetText();
-            cmbSize.ResetText();
         }
         private void Serialize(Ads ad)
         {
@@ -57,7 +43,7 @@ namespace XMLSer
             XmlSerializer xmlSerializer = new XmlSerializer(ad.GetType());
             var xns = new XmlSerializerNamespaces();
             xns.Add(string.Empty, string.Empty);
-            using (FileStream fs = new FileStream("Ads.xml", FileMode.OpenOrCreate))
+            using (FileStream fs = new FileStream("Avito.xml", FileMode.OpenOrCreate))
             {
                 xmlSerializer.Serialize(fs, ad, xns);
 
@@ -68,7 +54,7 @@ namespace XMLSer
         {
             //Десериализирует компоненты из xml файла в ListView
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(Ads));
-            using (FileStream fs = new FileStream("Ads.xml", FileMode.OpenOrCreate))
+            using (FileStream fs = new FileStream("Avito.xml", FileMode.OpenOrCreate))
             {
                 return (Ads)xmlSerializer.Deserialize(fs);
 
@@ -84,6 +70,7 @@ namespace XMLSer
         private void btCreate_Click(object sender, EventArgs e)
         {
             //Сохранает измения выбранного в ListView объекта
+            tbID.Text = DateTime.Now.ToString();
             if (ADsList.SelectedItems.Count == 1)
             {
                 Ad ad = (Ad)ADsList.SelectedItems[0].Tag;
@@ -116,7 +103,7 @@ namespace XMLSer
             {
                 //Добавляет новые объекты в ListView
                 ad = new Ad(tbID.Text, tbTitle.Text, dtpBeg.Text, dtpEnd.Text, cmbADStatus.Text,
-               cmbCategory.Text, cmbGoodsType.Text, cmbCondition.Text, tbDescription.Text, cmbContactMethod.Text,
+               cmbCategory.Text, cmbGoodsType.Text, cmbCondition.Text, tbDescription.Text, cmbContactMethod.Text,tbManager.Text,tbPhone.Text,
                tbPrice.Text, tbAdress.Text, images, tbVideoURL.Text = "url=" + '\u0022' + tbVideoURL.Text + '\u0022', cmbVendor.Text, cmbModel.Text, cmbColor.Text,
                cmbROM.Text, cmbRAM.Text , cmbAdType.Text);
                 Add(ad);
@@ -181,22 +168,30 @@ namespace XMLSer
             }
             Serialize(ad);
             //Подгоняет xml файл под Авито стандарты
-            var xml = File.ReadAllText("Ads.xml");
+            var xml = File.ReadAllText("Avito.xml");
             var correctedXml = xml.Replace("<Image>", "<Image ");
             xml = correctedXml;
             xml = xml.Replace("</Image>", "/>");
-            File.WriteAllText("Ads.xml", xml);
+            File.WriteAllText("Avito.xml", xml);
+            correctedXml = xml.Replace("<ADList>", "");
+            xml = correctedXml;
+            xml = xml.Replace("</ADList>", "");
+            File.WriteAllText("Yandex.xml", xml);
         }
 
         private void btDeserialize_Click(object sender, EventArgs e)
         {
             //Кнопка которая активирует метод десериализации Объявлений
             //Возваращет файлу первоначальный вид для корректной десериализации
-            var xml = File.ReadAllText("Ads.xml");
+            var xml = File.ReadAllText("Avito.xml");
             var correctedXml = xml.Replace("<Image ", "<Image>");
             xml = correctedXml;
             xml = xml.Replace('\u0022'+"/>",'\u0022'+"</Image>");
-            File.WriteAllText("Ads.xml", xml);
+            File.WriteAllText("Avito.xml", xml);
+            correctedXml = xml.Replace("<Ad>", " <ADList>\n<Ad>");
+            xml = correctedXml;
+            xml = xml.Replace("</Ad>", "</Ad>\n</ADList>");
+            File.WriteAllText("Yandex.xml", xml);
 
             ADsList.Clear();
             ClearInput();
@@ -266,68 +261,11 @@ namespace XMLSer
             {
                 cmbGoodsType.Items.AddRange(dictonary.clockFineryNames);
             }
-            
-
-        }
-
-        private void cmbGoodsType_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            cmbApparel.Items.Clear();
-            if (cmbGoodsType.Text == "Женская одежда")
+            else if (cmbCategory.Text == "Ремонт и строительство")
             {
-                cmbApparel.Items.AddRange(dictonary.womenApparelNames);
-            }
-            else if (cmbGoodsType.Text == "Мужская одежда")
-            {
-                cmbApparel.Items.AddRange(dictonary.menApparelNames);
-            }
-            else if (cmbGoodsType.Text == "Аксессуары")
-            {
-
-                cmbApparel.Items.AddRange(dictonary.accesApparelNames);
-            }
-            else
-            {
-                cmbApparel.Items.Add("");
+                cmbGoodsType.Items.AddRange(dictonary.toolNames);
             }
         }
-
-        private void cmbApparel_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            cmbApparelType.Items.Clear();
-            if (cmbApparel.Text == "Верхняя одежда" && cmbGoodsType.Text == "Женская одежда")
-            {
-                cmbApparelType.Items.AddRange(dictonary.womenTopApparelNames);
-            }
-            else if (cmbApparel.Text == "Верхняя одежда" && cmbGoodsType.Text == "Мужская одежда")
-            {
-                cmbApparelType.Items.AddRange(dictonary.menTopApparelNames);
-            }
-            else
-            {
-                cmbApparelType.Items.Add("");
-            }
-
-           
-        }
-
-        private void cmbSize_MouseEnter(object sender, EventArgs e)
-        {
-            cmbSize.Items.Clear();
-            if (cmbApparel.Text == "Верхняя одежда" && cmbGoodsType.Text == "Женская одежда")
-            {
-                cmbSize.Items.AddRange(dictonary.womenTopSizeNames);
-            }
-            else if (cmbApparel.Text == "Верхняя одежда" && cmbGoodsType.Text == "Мужская одежда")
-            {
-                cmbSize.Items.AddRange(dictonary.menTopSizeNames);
-            }
-            else
-            {
-                cmbSize.Items.Add("");
-            }
-        }
-
         private void panelDnD_MouseClick(object sender, MouseEventArgs e)
         {
             try
@@ -335,7 +273,7 @@ namespace XMLSer
                 
                 _fileDialog.Multiselect = true;
                 _fileDialog.Filter = "Image Files (*.bmp,*.png,*.jpg,*.jpeg)|*.bmp;*.png;*.jpg;*.jpeg";
-                if (_fileDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                if (_fileDialog.ShowDialog() == DialogResult.OK)
                 {
                     foreach (var x in _fileDialog.FileNames)
                     {
@@ -437,6 +375,101 @@ namespace XMLSer
         private void panelDnD_DragLeave(object sender, EventArgs e)
         {
             label26.Text = "Перетащи сюда файлы!";
+        }
+
+        private void btAddTemplate_Click(object sender, EventArgs e)
+        {
+            EdAddTemplate edAddTemplate = new EdAddTemplate();
+            edAddTemplate.ShowDialog();
+        }
+        private void UploadTemplates()
+        {
+            var con = new SQLiteConnection(cs);
+            con.Open();
+            string stm = "SELECT * FROM "+comboBox1.Text+"Templates";
+            var cmd = new SQLiteCommand(stm, con);
+            SQLiteDataReader rdr = cmd.ExecuteReader();
+            while (rdr.Read())
+            {
+                cmbTemplates.Items.Add(rdr.GetString(1));
+            }
+            con.Close();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cmbTemplates.Items.Clear();
+            UploadTemplates();
+            if (comboBox1.Text == "jewelry")
+            {
+                label27.Text = "Драгоценности";
+                cmbCategory.Text = "Часы и украшения";
+                cmbCondition.Text = "Б/у";
+                cmbAdType.Text = "Товар приобретен на продажу";
+                cmbADStatus.Text = "Free";
+                cmbContactMethod.Text = "По телефону и в сообщениях";
+            }
+            else if (comboBox1.Text == "pc")
+            {
+                label27.Text = "Настольный ПК";
+                cmbCategory.Text = "Настольные компьютеры";
+                cmbCondition.Text = "Б/у";
+                cmbADStatus.Text = "Free";
+                cmbContactMethod.Text = "По телефону и в сообщениях";
+            }
+            else if (comboBox1.Text == "lap")
+            {
+                label27.Text = "Ноутбук";
+                cmbCategory.Text = "Ноутбуки";
+                cmbCondition.Text = "Б/у";
+                cmbADStatus.Text = "Free";
+                cmbContactMethod.Text = "По телефону и в сообщениях";
+            }
+            else if (comboBox1.Text == "phone")
+            {
+                label27.Text = "Телефон";
+                cmbCategory.Text = "Телефоны";
+                cmbCondition.Text = "Б/у";
+                cmbADStatus.Text = "Free";
+                cmbContactMethod.Text = "По телефону и в сообщениях";
+            }
+            else if (comboBox1.Text == "tool")
+            {
+                label27.Text = "Инструмент";
+                cmbCategory.Text = "Ремонт и строительство";
+                cmbCondition.Text = "Б/у";
+                cmbAdType.Text = "Товар приобретен на продажу";
+                cmbADStatus.Text = "Free";
+                cmbContactMethod.Text = "По телефону и в сообщениях";
+            }
+            else
+            {
+                label27.Text = "Выберите значение";
+            }
+        }
+
+        private void cmbTemplates_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var con = new SQLiteConnection(cs);
+            con.Open();
+            string stm = "SELECT * FROM " + comboBox1.Text + "Templates where " + comboBox1.Text + "Templates.titleApp=='" + cmbTemplates.Text+"'";
+            var cmd = new SQLiteCommand(stm, con);
+            SQLiteDataReader rdr = cmd.ExecuteReader();
+            while (rdr.Read())
+            {
+                tbTitle.Text = rdr.GetString(2);
+                tbDescription.Text = rdr.GetString(3);
+            }
+            con.Close();
+        }
+        private void btAddImageTempl_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

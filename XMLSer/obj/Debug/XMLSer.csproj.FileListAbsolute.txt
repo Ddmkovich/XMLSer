@@ -11,4 +11,15 @@ C:\Users\Dmitriy\source\repos\XMLSer\XMLSer\obj\Debug\XMLSer.pdb
 C:\Users\Dmitriy\source\repos\XMLSer\XMLSer\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Dmitriy\source\repos\XMLSer\XMLSer\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Dmitriy\source\repos\XMLSer\XMLSer\obj\Debug\XMLSer.csproj.CopyComplete
+C:\Users\Dmitriy\source\repos\XMLSer\XMLSer\bin\Debug\EntityFramework.dll
+C:\Users\Dmitriy\source\repos\XMLSer\XMLSer\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Dmitriy\source\repos\XMLSer\XMLSer\bin\Debug\System.Data.SQLite.dll
+C:\Users\Dmitriy\source\repos\XMLSer\XMLSer\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\Dmitriy\source\repos\XMLSer\XMLSer\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\Dmitriy\source\repos\XMLSer\XMLSer\bin\Debug\EntityFramework.xml
+C:\Users\Dmitriy\source\repos\XMLSer\XMLSer\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Dmitriy\source\repos\XMLSer\XMLSer\bin\Debug\System.Data.SQLite.xml
+C:\Users\Dmitriy\source\repos\XMLSer\XMLSer\obj\Debug\XMLSer.EdAddTemplate.resources
+C:\Users\Dmitriy\source\repos\XMLSer\XMLSer\bin\Debug\Templates.db
+C:\Users\Dmitriy\source\repos\XMLSer\XMLSer\bin\Debug\notepad_78910.ico
 C:\Users\Dmitriy\source\repos\XMLSer\XMLSer\obj\Debug\XMLSer.csproj.AssemblyReference.cache

@@ -29,6 +29,8 @@ namespace XMLSer
         public string Condition { get; set; }
         public string Description { get; set; }
         public string ContactMethod { get; set; }
+        public string ContactManager { get; set; }
+        public string ContactPhone { get; set; }
         public string Price { get; set; }
         public string Address { get; set; }
         [XmlArrayItem("Image")]
@@ -49,7 +51,7 @@ namespace XMLSer
         //Не пустой конструктор для заполнения данных
         public Ad(string Id, string Title, string DateBegin, string DateEnd, string AdStatus,
             string Category, string GoodsType, string Condition, string Description,
-            string ContactMethod, string Price, string Address, List<string> images, string VideoUrl,
+            string ContactMethod,string ContactManager, string ContactPhone, string Price, string Address, List<string> images, string VideoUrl,
             string Vendor, string Model, string Color, string MemorySize, string RamSize, string AdType)
         {
             this.Id = Id;
@@ -62,6 +64,8 @@ namespace XMLSer
             this.GoodsType = GoodsType;
             this.Condition = Condition;
             this.ContactMethod = ContactMethod;
+            this.ContactManager = ContactManager;
+            this.ContactPhone = ContactPhone;
             this.Price = Price;
             this.Address = Address;
             this.Images.AddRange(images);
