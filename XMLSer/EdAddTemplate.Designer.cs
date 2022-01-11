@@ -61,14 +61,14 @@
             // 
             this.tbTitleApp.Location = new System.Drawing.Point(12, 72);
             this.tbTitleApp.Name = "tbTitleApp";
-            this.tbTitleApp.Size = new System.Drawing.Size(100, 20);
+            this.tbTitleApp.Size = new System.Drawing.Size(235, 20);
             this.tbTitleApp.TabIndex = 1;
             // 
             // tbTitle
             // 
             this.tbTitle.Location = new System.Drawing.Point(12, 124);
             this.tbTitle.Name = "tbTitle";
-            this.tbTitle.Size = new System.Drawing.Size(100, 20);
+            this.tbTitle.Size = new System.Drawing.Size(235, 20);
             this.tbTitle.TabIndex = 2;
             // 
             // tbDescr

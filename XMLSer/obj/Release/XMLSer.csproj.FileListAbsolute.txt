@@ -22,3 +22,4 @@ C:\Users\Dmitriy\source\repos\XMLSer\XMLSer\obj\Release\XMLSer.csproj.CoreCompil
 C:\Users\Dmitriy\source\repos\XMLSer\XMLSer\obj\Release\XMLSer.csproj.CopyComplete
 C:\Users\Dmitriy\source\repos\XMLSer\XMLSer\obj\Release\XMLSer.exe
 C:\Users\Dmitriy\source\repos\XMLSer\XMLSer\obj\Release\XMLSer.pdb
+C:\Users\Dmitriy\source\repos\XMLSer\XMLSer\obj\Release\XMLSer.csproj.AssemblyReference.cache

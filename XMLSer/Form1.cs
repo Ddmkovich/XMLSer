@@ -23,6 +23,7 @@ namespace XMLSer
         {
             InitializeComponent();
             ClearInput();
+            tbTitle.MaxLength = 54;
             dtpBeg.CustomFormat = "dd.MM.yy H:mm:ss";
             dtpEnd.CustomFormat = "dd.MM.yy H:mm:ss";
         }
@@ -36,6 +37,8 @@ namespace XMLSer
             cmbRAM.ResetText();
             cmbROM.ResetText();
             cmbVendor.ResetText();
+            tbIImgURL.Clear();
+            tbVideoURL.Clear();
         }
         private void Serialize(Ads ad)
         {
@@ -141,7 +144,8 @@ namespace XMLSer
                     cmbROM.Text = ad.MemorySize;
                     foreach (var x in ad.Images)
                     {
-                       
+                       images.Add(x);
+                        tbIImgURL.Text += x.ToString() + "\n";
                     }
                     cmbAdType.Text = ad.AdType;
                 }
@@ -174,9 +178,6 @@ namespace XMLSer
             xml = xml.Replace("</Image>", "/>");
             File.WriteAllText("Avito.xml", xml);
             correctedXml = xml.Replace("<ADList>", "");
-            xml = correctedXml;
-            xml = xml.Replace("</ADList>", "");
-            File.WriteAllText("Yandex.xml", xml);
         }
 
         private void btDeserialize_Click(object sender, EventArgs e)
@@ -188,10 +189,6 @@ namespace XMLSer
             xml = correctedXml;
             xml = xml.Replace('\u0022'+"/>",'\u0022'+"</Image>");
             File.WriteAllText("Avito.xml", xml);
-            correctedXml = xml.Replace("<Ad>", " <ADList>\n<Ad>");
-            xml = correctedXml;
-            xml = xml.Replace("</Ad>", "</Ad>\n</ADList>");
-            File.WriteAllText("Yandex.xml", xml);
 
             ADsList.Clear();
             ClearInput();
@@ -270,7 +267,8 @@ namespace XMLSer
         {
             try
             {
-                
+                images.Clear();
+                tbIImgURL.Clear();
                 _fileDialog.Multiselect = true;
                 _fileDialog.Filter = "Image Files (*.bmp,*.png,*.jpg,*.jpeg)|*.bmp;*.png;*.jpg;*.jpeg";
                 if (_fileDialog.ShowDialog() == DialogResult.OK)
@@ -296,6 +294,7 @@ namespace XMLSer
                             //скопируем URL в буфер обмена
                             Clipboard.SetData(DataFormats.Text, (Object)UploadedImageData.data.image.url);
                             images.Add("url=" + '\u0022' + UploadedImageData.data.image.url + '\u0022');
+                            tbIImgURL.Text += ("url=" + '\u0022' + UploadedImageData.data.image.url + '\u0022');
                             
                         }
 
@@ -312,8 +311,11 @@ namespace XMLSer
 
         private void panelDnD_DragDrop(object sender, DragEventArgs e)
         {
+
             try
             {
+                images.Clear();
+                tbIImgURL.Clear();
                 List<string> filepaths = new List<string>();
                 foreach (var obj in (string[])e.Data.GetData(DataFormats.FileDrop))
                 {
@@ -350,7 +352,7 @@ namespace XMLSer
                         //скопируем URL в буфер обмена
                         Clipboard.SetData(DataFormats.Text, (Object)UploadedImageData.data.image.url);
                         images.Add("url=" + '\u0022' + UploadedImageData.data.image.url + '\u0022');
-                        //MessageBox.Show(UploadedImageData.data.image.url);
+                        tbIImgURL.Text += ("url=" + '\u0022' + UploadedImageData.data.image.url + '\u0022');
 
                     }
                 }

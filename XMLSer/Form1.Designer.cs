@@ -86,6 +86,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.ofdImages = new System.Windows.Forms.OpenFileDialog();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.tbIImgURL = new System.Windows.Forms.TextBox();
             this.panelDnD.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -226,9 +227,9 @@
             this.btCreate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btCreate.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btCreate.Location = new System.Drawing.Point(825, 651);
+            this.btCreate.Location = new System.Drawing.Point(825, 668);
             this.btCreate.Name = "btCreate";
-            this.btCreate.Size = new System.Drawing.Size(154, 55);
+            this.btCreate.Size = new System.Drawing.Size(272, 38);
             this.btCreate.TabIndex = 15;
             this.btCreate.Text = "Сохранить";
             this.btCreate.UseVisualStyleBackColor = true;
@@ -776,11 +777,21 @@
             this.panel2.Size = new System.Drawing.Size(0, 711);
             this.panel2.TabIndex = 21;
             // 
+            // tbIImgURL
+            // 
+            this.tbIImgURL.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.tbIImgURL.Location = new System.Drawing.Point(567, 587);
+            this.tbIImgURL.Multiline = true;
+            this.tbIImgURL.Name = "tbIImgURL";
+            this.tbIImgURL.Size = new System.Drawing.Size(252, 75);
+            this.tbIImgURL.TabIndex = 71;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1109, 711);
+            this.Controls.Add(this.tbIImgURL);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.tbAdress);
             this.Controls.Add(this.label12);
@@ -905,6 +916,7 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.ComboBox tbAdress;
+        private System.Windows.Forms.TextBox tbIImgURL;
     }
 }
 
