@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<yml_catalog>
+  <offerList>
+    <offer id="19.01.2022 17:51:32">
+      <name>Волшебная золотая цепь</name>
+      <youlaCategoryId>Часы и украшения</youlaCategoryId>
+      <youlaSubcategoryId>Ювелирные изделия</youlaSubcategoryId>
+      <description>Звоните, пишите!</description>
+      <managerName />
+      <phone>+7(933) 997-7705</phone>
+      <price>76000</price>
+      <address>г. Абакан</address>
+      <Images>
+        <picture>url="https://i.ibb.co/471YF4f/bc9c47797961.jpg"</picture>
+        <picture>url="https://i.ibb.co/qp0CjsV/9d8e11c9d305.jpg"</picture>
+        <picture>url="https://i.ibb.co/6w41mS4/49909062bf76.jpg"</picture>
+        <picture>url="https://i.ibb.co/NWdrnT9/2b2f48ac81a5.jpg"</picture>
+      </Images>
+    </offer>
+  </offerList>
+</yml_catalog>

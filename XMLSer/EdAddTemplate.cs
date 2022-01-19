@@ -22,8 +22,6 @@ namespace XMLSer
         public EdAddTemplate()
         {
             InitializeComponent();
-            tbTitleApp.MaxLength = 54;
-            tbTitle.MaxLength = 54;
         }
         private void btSave_Click(object sender, EventArgs e)
         {

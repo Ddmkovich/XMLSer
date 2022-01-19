@@ -73,17 +73,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Dictonary.cs" />
+    <Compile Include="Classes\XMLSerDeser.cs" />
     <Compile Include="EdAddTemplate.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="EdAddTemplate.Designer.cs">
       <DependentUpon>EdAddTemplate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\JsonDeser.cs" />
     <Compile Include="Classes\Program.cs" />
@@ -92,8 +93,8 @@
     <EmbeddedResource Include="EdAddTemplate.resx">
       <DependentUpon>EdAddTemplate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -2,7 +2,6 @@ C:\Users\Dmitriy\source\repos\XMLSer\XMLSer\bin\Debug\XMLSer.exe.config
 C:\Users\Dmitriy\source\repos\XMLSer\XMLSer\bin\Debug\XMLSer.exe
 C:\Users\Dmitriy\source\repos\XMLSer\XMLSer\bin\Debug\XMLSer.pdb
 C:\Users\Dmitriy\source\repos\XMLSer\XMLSer\obj\Debug\XMLSer.csproj.SuggestedBindingRedirects.cache
-C:\Users\Dmitriy\source\repos\XMLSer\XMLSer\obj\Debug\XMLSer.Form1.resources
 C:\Users\Dmitriy\source\repos\XMLSer\XMLSer\obj\Debug\XMLSer.Properties.Resources.resources
 C:\Users\Dmitriy\source\repos\XMLSer\XMLSer\obj\Debug\XMLSer.csproj.GenerateResource.cache
 C:\Users\Dmitriy\source\repos\XMLSer\XMLSer\obj\Debug\XMLSer.csproj.CoreCompileInputs.cache
@@ -23,3 +22,4 @@ C:\Users\Dmitriy\source\repos\XMLSer\XMLSer\obj\Debug\XMLSer.EdAddTemplate.resou
 C:\Users\Dmitriy\source\repos\XMLSer\XMLSer\bin\Debug\Templates.db
 C:\Users\Dmitriy\source\repos\XMLSer\XMLSer\bin\Debug\notepad_78910.ico
 C:\Users\Dmitriy\source\repos\XMLSer\XMLSer\obj\Debug\XMLSer.csproj.AssemblyReference.cache
+C:\Users\Dmitriy\source\repos\XMLSer\XMLSer\obj\Debug\XMLSer.MainForm.resources

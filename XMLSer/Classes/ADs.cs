@@ -5,9 +5,9 @@ using System.Xml.Serialization;
 namespace XMLSer
 {
     [Serializable]
+    //Класс для Авито xml файла
     public class Ads
     {
-
         //Атрибуты для авито
         [XmlAttribute("formatVersion")]
         public string formatVersion = "3";
@@ -15,10 +15,10 @@ namespace XMLSer
         public string target = "Avito.ru";
         public List<Ad> ADList { get; set; } = new List<Ad>();
     }
-
     [Serializable]
     public class Ad
     {
+        //Название полей соответсвуют тегам в xml файле, где это не указано напрямую
         public string Id { get; set; }
         public string Title { get; set; }
         public string DateBegin { get; set; }
@@ -37,7 +37,7 @@ namespace XMLSer
         public List<string> Images { get; set; } = new List<string>();
         public string VideoUrl { get; set; }
 
-        //Вторичные для личных вещей
+        //Необходим для некоторых типов товаров
         public string AdType { get; set; }
         //Вторичные для телефона
         public string Vendor { get; set; }
@@ -76,6 +76,48 @@ namespace XMLSer
             this.Color = Color;
             this.RamSize = RamSize;
             this.MemorySize = MemorySize;
+        }
+    }
+    [Serializable]
+    public class yml_catalog
+    {
+        [XmlAttribute("xmlns")]
+        public string xmlns = "http://webmaster.yandex.ru/schemas/feed/realty/2010-06";
+
+        public List<offer> offerList { get; set; } = new List<offer>();
+    }
+    [Serializable]
+    public class offer
+    {
+        //Название полей соответсвуют тегам в xml файле, где это не указано напрямую
+        [XmlAttribute("id")]
+        public string id = DateTime.Now.ToString();
+        public string name { get; set; }
+        public string youlaCategoryId { get; set; }
+        public string youlaSubcategoryId { get; set; }
+        public string description { get; set; }
+        public string managerName { get; set; }
+        public string phone { get; set; }
+        public string price { get; set; }
+        public string address { get; set; }
+        [XmlArrayItem("picture")]
+        public List<string> Images { get; set; } = new List<string>();
+        //Пустой конструктор необходим для сериализации
+        public offer() { }
+        //Не пустой конструктор для заполнения данных
+        public offer(string name, string youlaCategoryId, string youlaSubcategoryId, string description,
+             string managerName, string phone, string price,
+            string address, List<string> images)
+        {
+            this.name = name;
+            this.youlaCategoryId = youlaCategoryId;
+            this.youlaSubcategoryId = youlaSubcategoryId;
+            this.description = description;
+            this.managerName = managerName;
+            this.phone = phone;
+            this.price = price;
+            this.address = address;
+            this.Images.AddRange(images);
         }
     }
 }

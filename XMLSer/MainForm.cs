@@ -12,20 +12,22 @@ using System.Data.SQLite;
 
 namespace XMLSer
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
         List<string> images = new List<string>();
+        List<string> youlaLabels = new List<string>();
         OpenFileDialog _fileDialog = new OpenFileDialog();
+        Classes.XMLSerDeser XMLSerDeser = new Classes.XMLSerDeser();
         Ad ad = new Ad();
+        offer offer = new offer();
         Dictonary dictonary = new Dictonary();
         string cs = @"URI=file:Templates.db";
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
             ClearInput();
-            tbTitle.MaxLength = 54;
-            dtpBeg.CustomFormat = "dd.MM.yy H:mm:ss";
-            dtpEnd.CustomFormat = "dd.MM.yy H:mm:ss";
+            dtpBeg.CustomFormat = "yyyy.MM.ddTH:mm:ss";
+            dtpEnd.CustomFormat = "yyyy.MM.ddTH:mm:ss";
         }
         private void ClearInput()
         { 
@@ -40,35 +42,20 @@ namespace XMLSer
             tbIImgURL.Clear();
             tbVideoURL.Clear();
         }
-        private void Serialize(Ads ad)
+        
+        private void AddAvito(Ad ad)
         {
-            //Сериализирует все объекты из ListView в xml файл
-            XmlSerializer xmlSerializer = new XmlSerializer(ad.GetType());
-            var xns = new XmlSerializerNamespaces();
-            xns.Add(string.Empty, string.Empty);
-            using (FileStream fs = new FileStream("Avito.xml", FileMode.OpenOrCreate))
-            {
-                xmlSerializer.Serialize(fs, ad, xns);
-
-            }
-
+            //Добавляет объект в ListView и называет в соответствии с заголовком объявления
+            ListViewItem LVIAvito = new ListViewItem(ad.Title);
+            LVIAvito.Tag = ad;
+            ADsList.Items.Add(LVIAvito);
         }
-        private Ads Deserialize()
+        private void AddYoula(offer offer)
         {
-            //Десериализирует компоненты из xml файла в ListView
-            XmlSerializer xmlSerializer = new XmlSerializer(typeof(Ads));
-            using (FileStream fs = new FileStream("Avito.xml", FileMode.OpenOrCreate))
-            {
-                return (Ads)xmlSerializer.Deserialize(fs);
-
-            }
-        }
-        private void Add(Ad ad)
-        {
-            //Добавляет объекст в ListView и называет в соответствии с заголовком объявления
-            ListViewItem LVI = new ListViewItem(ad.Title);
-            LVI.Tag = ad;
-            ADsList.Items.Add(LVI);
+            //Добавляет объект в ListView и называет в соответствии с заголовком объявления
+            ListViewItem LVIYoula = new ListViewItem(offer.name);
+            LVIYoula.Tag = offer;
+            youlaList.Items.Add(LVIYoula);
         }
         private void btCreate_Click(object sender, EventArgs e)
         {
@@ -76,6 +63,7 @@ namespace XMLSer
             tbID.Text = DateTime.Now.ToString();
             if (ADsList.SelectedItems.Count == 1)
             {
+                ClearInput();
                 Ad ad = (Ad)ADsList.SelectedItems[0].Tag;
                 if (ad != null)
                 {
@@ -102,6 +90,25 @@ namespace XMLSer
                 }
                
             }
+            else if (youlaList.SelectedItems.Count == 1)
+            {
+                ClearInput();
+                offer offer = (offer)youlaList.SelectedItems[0].Tag;
+                if (ad != null)
+                {
+                    offer.name = tbTitle.Text;
+                    offer.youlaCategoryId = cmbCategory.Text;
+                    offer.youlaSubcategoryId = cmbGoodsType.Text;
+                    offer.address = tbAdress.Text;
+                    offer.price = tbPrice.Text;
+                    offer.phone = tbPhone.Text;
+                    offer.managerName = tbManager.Text;
+                    offer.Images = images;
+                    offer.description = tbDescription.Text;
+
+                }
+
+            }
             else
             {
                 //Добавляет новые объекты в ListView
@@ -109,7 +116,9 @@ namespace XMLSer
                cmbCategory.Text, cmbGoodsType.Text, cmbCondition.Text, tbDescription.Text, cmbContactMethod.Text,tbManager.Text,tbPhone.Text,
                tbPrice.Text, tbAdress.Text, images, tbVideoURL.Text = "url=" + '\u0022' + tbVideoURL.Text + '\u0022', cmbVendor.Text, cmbModel.Text, cmbColor.Text,
                cmbROM.Text, cmbRAM.Text , cmbAdType.Text);
-                Add(ad);
+                offer = new offer(tbTitle.Text,cmbCategory.Text,cmbGoodsType.Text,tbDescription.Text, tbManager.Text, tbPhone.Text,tbPrice.Text,tbAdress.Text,images);
+                AddAvito(ad);
+                AddYoula(offer);
                 ClearInput();
             }
            
@@ -122,6 +131,7 @@ namespace XMLSer
             if (ADsList.SelectedItems.Count == 1)
             {
                 Ad ad = (Ad)ADsList.SelectedItems[0].Tag;
+                btCreate.Text = "Сохранить изменения Авито";
                 if (ad != null)
                 {
                     tbID.Text = ad.Id;
@@ -154,11 +164,43 @@ namespace XMLSer
             else if (ADsList.SelectedItems.Count == 0)
             {
                 //Очищает поля если ничего не выбрано
+                btCreate.Text = "Сохранить";
                 ClearInput();
             }
         }
+        private void youlaList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (youlaList.SelectedItems.Count == 1)
+            {
+                ClearInput();
+                offer offer = (offer)youlaList.SelectedItems[0].Tag;
+                btCreate.Text = "Сохранить изменения Юла";
+                if (ad != null)
+                {
+                    tbTitle.Text = offer.name;
+                    cmbCategory.Text = offer.youlaCategoryId;
+                    cmbGoodsType.Text = offer.youlaSubcategoryId;
+                    tbAdress.Text = offer.address;
+                    tbPrice.Text = offer.price;
+                    tbPhone.Text = offer.phone;
+                    tbManager.Text = offer.managerName;
+                    foreach (var x in offer.Images)
+                    {
+                        images.Add(x);
+                        tbIImgURL.Text += x.ToString() + "\n";
+                    }
+                    tbDescription.Text = offer.description;
 
+                }
 
+            }
+            else if (ADsList.SelectedItems.Count == 0)
+            {
+                //Очищает поля если ничего не выбрано
+                btCreate.Text = "Сохранить";
+                ClearInput();
+            }
+        }
         private void btSerialize_Click(object sender, EventArgs e)
         {
             //Кнопка которая активирует метод сериализации Объявлений
@@ -168,9 +210,20 @@ namespace XMLSer
                 if (item.Tag != null)
                 {
                     ad.ADList.Add((Ad)item.Tag);
+                    
                 }
             }
-            Serialize(ad);
+            yml_catalog offers = new yml_catalog();
+            foreach (ListViewItem item in youlaList.Items)
+            {
+                if (item.Tag != null)
+                {
+                    offers.offerList.Add((offer)item.Tag);
+
+                }
+            }
+            XMLSerDeser.SerializeAvito(ad); //Передаёт данные в класс XMLSerDeser, который сериализует данные
+            XMLSerDeser.SerializeYoula(offers);
             //Подгоняет xml файл под Авито стандарты
             var xml = File.ReadAllText("Avito.xml");
             var correctedXml = xml.Replace("<Image>", "<Image ");
@@ -192,14 +245,152 @@ namespace XMLSer
 
             ADsList.Clear();
             ClearInput();
-            Ads aDs = Deserialize();
+            //Передаёт данные в класс XMLSerDeser, который десериализует данные
+            Ads aDs = XMLSerDeser.DeserializeAvito();
             foreach (Ad ad in aDs.ADList)
             {
-                Add(ad);
+                AddAvito(ad);
+            }
+            yml_catalog offers = XMLSerDeser.DeserializeYoula();
+            foreach (offer offer in offers.offerList)
+            {
+                AddYoula(offer);
+            }
+
+        }
+        private void panelDnD_MouseClick(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                images.Clear();
+                tbIImgURL.Clear();
+                _fileDialog.Multiselect = true;
+                _fileDialog.Filter = "Image Files (*.bmp,*.png,*.jpg,*.jpeg)|*.bmp;*.png;*.jpg;*.jpeg";
+                if (_fileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    foreach (var x in _fileDialog.FileNames)
+                    {
+                        byte[] imageArray = File.ReadAllBytes(x);
+                        string base64ImageRepresentation = Convert.ToBase64String(imageArray);
+                        using (WebClient client = new WebClient())
+                        {
+                            //задаем параметры для коллекции
+                            NameValueCollection param = new NameValueCollection();
+                            param.Add("key", "5422e9f2d271f43564f1bc9511c938e7");
+                            //удалится через 3 дня
+                            param.Add("expiration", "259200");
+                            param.Add("image", base64ImageRepresentation);
+                            //делаем запрос методом POST и получем массив байтов
+                            var response = client.UploadValues("https://api.imgbb.com/1/upload", "POST", param);
+                            //декодируем
+                            var jsonResponse = Encoding.Default.GetString(response);
+                            //десериализуем
+                            JsonDeser UploadedImageData = JsonConvert.DeserializeObject<JsonDeser>(jsonResponse);
+                            //скопируем URL в буфер обмена
+                            Clipboard.SetData(DataFormats.Text, (Object)UploadedImageData.data.image.url);
+                            images.Add("url=" + '\u0022' + UploadedImageData.data.image.url + '\u0022');
+                            tbIImgURL.Text += ("url=" + '\u0022' + UploadedImageData.data.image.url + '\u0022');
+                            
+                        }
+
+                    }
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void btAddTemplate_Click(object sender, EventArgs e)
+        {
+            EdAddTemplate edAddTemplate = new EdAddTemplate();
+            edAddTemplate.ShowDialog();
+        }
+        //Загрузка списка шаблонов и их вставка в combobox для шаблонов
+        private void UploadTemplates()
+        {
+            var con = new SQLiteConnection(cs);
+            con.Open();
+            string stm = "SELECT * FROM "+cmbTemplateFrom.Text+"Templates";
+            var cmd = new SQLiteCommand(stm, con);
+            SQLiteDataReader rdr = cmd.ExecuteReader();
+            while (rdr.Read())
+            {
+                cmbTemplates.Items.Add(rdr.GetString(1));
+            }
+            con.Close();
+        }
+
+        //Дальше работа с комбобоксами и классом Dictionary
+        private void cmbTemplateFrom_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cmbTemplates.Items.Clear();
+            UploadTemplates();
+            if (cmbTemplateFrom.Text == "jewelry")
+            {
+                label27.Text = "Драгоценности";
+                cmbCategory.Text = "Часы и украшения";
+                cmbCondition.Text = "Б/у";
+                cmbAdType.Text = "Товар приобретен на продажу";
+                cmbADStatus.Text = "Free";
+                cmbContactMethod.Text = "По телефону и в сообщениях";
+            }
+            else if (cmbTemplateFrom.Text == "pc")
+            {
+                label27.Text = "Настольный ПК";
+                cmbCategory.Text = "Настольные компьютеры";
+                cmbCondition.Text = "Б/у";
+                cmbADStatus.Text = "Free";
+                cmbContactMethod.Text = "По телефону и в сообщениях";
+            }
+            else if (cmbTemplateFrom.Text == "lap")
+            {
+                label27.Text = "Ноутбук";
+                cmbCategory.Text = "Ноутбуки";
+                cmbCondition.Text = "Б/у";
+                cmbADStatus.Text = "Free";
+                cmbContactMethod.Text = "По телефону и в сообщениях";
+            }
+            else if (cmbTemplateFrom.Text == "phone")
+            {
+                label27.Text = "Телефон";
+                cmbCategory.Text = "Телефоны";
+                cmbCondition.Text = "Б/у";
+                cmbADStatus.Text = "Free";
+                cmbContactMethod.Text = "По телефону и в сообщениях";
+            }
+            else if (cmbTemplateFrom.Text == "tool")
+            {
+                label27.Text = "Инструмент";
+                cmbCategory.Text = "Ремонт и строительство";
+                cmbCondition.Text = "Б/у";
+                cmbAdType.Text = "Товар приобретен на продажу";
+                cmbADStatus.Text = "Free";
+                cmbContactMethod.Text = "По телефону и в сообщениях";
+            }
+            else
+            {
+                label27.Text = "Выберите значение";
             }
         }
 
-        //Далее события которые активирует определённый справочник при определённом выборе
+        private void cmbTemplates_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var con = new SQLiteConnection(cs);
+            con.Open();
+            string stm = "SELECT * FROM " + cmbTemplateFrom.Text + "Templates where " + cmbTemplateFrom.Text + "Templates.titleApp=='" + cmbTemplates.Text+"'";
+            var cmd = new SQLiteCommand(stm, con);
+            SQLiteDataReader rdr = cmd.ExecuteReader();
+            while (rdr.Read())
+            {
+                tbTitle.Text = rdr.GetString(2);
+                tbDescription.Text = rdr.GetString(3);
+            }
+            con.Close();
+        }
+        
         private void cmbCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
             cmbGoodsType.Items.Clear();
@@ -263,215 +454,7 @@ namespace XMLSer
                 cmbGoodsType.Items.AddRange(dictonary.toolNames);
             }
         }
-        private void panelDnD_MouseClick(object sender, MouseEventArgs e)
-        {
-            try
-            {
-                images.Clear();
-                tbIImgURL.Clear();
-                _fileDialog.Multiselect = true;
-                _fileDialog.Filter = "Image Files (*.bmp,*.png,*.jpg,*.jpeg)|*.bmp;*.png;*.jpg;*.jpeg";
-                if (_fileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    foreach (var x in _fileDialog.FileNames)
-                    {
-                        byte[] imageArray = File.ReadAllBytes(x);
-                        string base64ImageRepresentation = Convert.ToBase64String(imageArray);
-                        using (WebClient client = new WebClient())
-                        {
-                            //задаем параметры для коллекции
-                            NameValueCollection param = new NameValueCollection();
-                            param.Add("key", "50d7cec1c380ecf610b6475acb9a148f");
-                            //удалится через 3 дня
-                            param.Add("expiration", "259200");
-                            param.Add("image", base64ImageRepresentation);
-                            //делаем запрос методом POST и получем массив байтов
-                            var response = client.UploadValues("https://api.imgbb.com/1/upload", "POST", param);
-                            //декодируем
-                            var jsonResponse = Encoding.Default.GetString(response);
-                            //десериализуем
-                            JsonDeser UploadedImageData = JsonConvert.DeserializeObject<JsonDeser>(jsonResponse);
-                            //скопируем URL в буфер обмена
-                            Clipboard.SetData(DataFormats.Text, (Object)UploadedImageData.data.image.url);
-                            images.Add("url=" + '\u0022' + UploadedImageData.data.image.url + '\u0022');
-                            tbIImgURL.Text += ("url=" + '\u0022' + UploadedImageData.data.image.url + '\u0022');
-                            
-                        }
 
-                    }
-
-                }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void panelDnD_DragDrop(object sender, DragEventArgs e)
-        {
-
-            try
-            {
-                images.Clear();
-                tbIImgURL.Clear();
-                List<string> filepaths = new List<string>();
-                foreach (var obj in (string[])e.Data.GetData(DataFormats.FileDrop))
-                {
-                    if (Directory.Exists(obj))
-                    {
-                        filepaths.AddRange(Directory.GetFiles(obj, "*.*", SearchOption.AllDirectories));
-                    }
-                    else
-                    {
-                        filepaths.Add(obj);
-                    }
-
-                }
-                foreach (var fileInList in filepaths)
-                {
-                    //массив байтов файла
-                    byte[] imageArray = File.ReadAllBytes(fileInList);
-                    //конвертируем в base64
-                    string base64ImageRepresentation = Convert.ToBase64String(imageArray);
-                    using (WebClient client = new WebClient())
-                    {
-                        //задаем параметры для коллекции
-                        NameValueCollection param = new NameValueCollection();
-                        param.Add("key", "50d7cec1c380ecf610b6475acb9a148f");
-                        //удалится через 3 дня
-                        param.Add("expiration", "259200");
-                        param.Add("image", base64ImageRepresentation);
-                        //делаем запрос методом POST и получем массив байтов
-                        var response = client.UploadValues("https://api.imgbb.com/1/upload", "POST", param);
-                        //декодируем
-                        var jsonResponse = Encoding.Default.GetString(response);
-                        //десериализуем
-                        JsonDeser UploadedImageData = JsonConvert.DeserializeObject<JsonDeser>(jsonResponse);
-                        //скопируем URL в буфер обмена
-                        Clipboard.SetData(DataFormats.Text, (Object)UploadedImageData.data.image.url);
-                        images.Add("url=" + '\u0022' + UploadedImageData.data.image.url + '\u0022');
-                        tbIImgURL.Text += ("url=" + '\u0022' + UploadedImageData.data.image.url + '\u0022');
-
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show(ex.Message);
-            }
-        
-        }
-
-        private void panelDnD_DragEnter(object sender, DragEventArgs e)
-        {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop, false))
-            {
-                label26.Text = "Бросай!";
-                e.Effect = DragDropEffects.Copy;
-            }
-        }
-
-        private void panelDnD_DragLeave(object sender, EventArgs e)
-        {
-            label26.Text = "Перетащи сюда файлы!";
-        }
-
-        private void btAddTemplate_Click(object sender, EventArgs e)
-        {
-            EdAddTemplate edAddTemplate = new EdAddTemplate();
-            edAddTemplate.ShowDialog();
-        }
-        private void UploadTemplates()
-        {
-            var con = new SQLiteConnection(cs);
-            con.Open();
-            string stm = "SELECT * FROM "+comboBox1.Text+"Templates";
-            var cmd = new SQLiteCommand(stm, con);
-            SQLiteDataReader rdr = cmd.ExecuteReader();
-            while (rdr.Read())
-            {
-                cmbTemplates.Items.Add(rdr.GetString(1));
-            }
-            con.Close();
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            cmbTemplates.Items.Clear();
-            UploadTemplates();
-            if (comboBox1.Text == "jewelry")
-            {
-                label27.Text = "Драгоценности";
-                cmbCategory.Text = "Часы и украшения";
-                cmbCondition.Text = "Б/у";
-                cmbAdType.Text = "Товар приобретен на продажу";
-                cmbADStatus.Text = "Free";
-                cmbContactMethod.Text = "По телефону и в сообщениях";
-            }
-            else if (comboBox1.Text == "pc")
-            {
-                label27.Text = "Настольный ПК";
-                cmbCategory.Text = "Настольные компьютеры";
-                cmbCondition.Text = "Б/у";
-                cmbADStatus.Text = "Free";
-                cmbContactMethod.Text = "По телефону и в сообщениях";
-            }
-            else if (comboBox1.Text == "lap")
-            {
-                label27.Text = "Ноутбук";
-                cmbCategory.Text = "Ноутбуки";
-                cmbCondition.Text = "Б/у";
-                cmbADStatus.Text = "Free";
-                cmbContactMethod.Text = "По телефону и в сообщениях";
-            }
-            else if (comboBox1.Text == "phone")
-            {
-                label27.Text = "Телефон";
-                cmbCategory.Text = "Телефоны";
-                cmbCondition.Text = "Б/у";
-                cmbADStatus.Text = "Free";
-                cmbContactMethod.Text = "По телефону и в сообщениях";
-            }
-            else if (comboBox1.Text == "tool")
-            {
-                label27.Text = "Инструмент";
-                cmbCategory.Text = "Ремонт и строительство";
-                cmbCondition.Text = "Б/у";
-                cmbAdType.Text = "Товар приобретен на продажу";
-                cmbADStatus.Text = "Free";
-                cmbContactMethod.Text = "По телефону и в сообщениях";
-            }
-            else
-            {
-                label27.Text = "Выберите значение";
-            }
-        }
-
-        private void cmbTemplates_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            var con = new SQLiteConnection(cs);
-            con.Open();
-            string stm = "SELECT * FROM " + comboBox1.Text + "Templates where " + comboBox1.Text + "Templates.titleApp=='" + cmbTemplates.Text+"'";
-            var cmd = new SQLiteCommand(stm, con);
-            SQLiteDataReader rdr = cmd.ExecuteReader();
-            while (rdr.Read())
-            {
-                tbTitle.Text = rdr.GetString(2);
-                tbDescription.Text = rdr.GetString(3);
-            }
-            con.Close();
-        }
-        private void btAddImageTempl_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel3_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+       
     }
 }
